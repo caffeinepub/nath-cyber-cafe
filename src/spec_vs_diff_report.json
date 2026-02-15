@@ -1,68 +1,75 @@
 {
   "kind": "spec_vs_diff_report",
   "version": "1.0",
-  "generatedAt": "2026-02-15T06:46:49.005Z",
-  "summary": "Diff adds a TanStack Router-based 4-page marketing site layout with hero/services/why-choose-us sections, footer social links, WhatsApp button, a contact form wired to a Motoko backend, and theme styling. Backend stores contact submissions in a Map keyed by caller principal and exposes cafe info and contact queries.",
+  "generatedAt": "2026-02-15T07:45:02.683Z",
+  "summary": "The diff largely implements a new government-jobs UI on /jobs (royal-blue styling, emblem header, React Query caching, search/category filtering, load-more pagination, and official-domain allowlisting for apply links). However, several BuildRequest acceptance criteria are not fully met based on the provided diff summary/truncation: data sourcing is still a curated static dataset (not RSS/API/back-end aggregated), missing-field placeholders (“—”) are not rendered (fields are conditionally hidden), required footer disclaimer text is not evidenced, the required phone number is not evidenced, and the required generated emblem asset file is not shown as added.",
   "missing_requirements": [
     {
-      "id": "REQ-6",
-      "requirement": "Contact page/section displays the business name “Nath Cyber Cafe”, phone numbers “9435212145 / 91260 26463”, add a WhatsApp chat button, include a contact form with fields (Name, Phone, Message), and show a Google Map embed area using a location placeholder.",
-      "reason": "Backend cafe info returns phone string that does not exactly match the required phone-number formatting (missing the space in the second number), which risks failing the “exactly as provided” acceptance criteria if the UI uses backend-provided data.",
+      "id": "REQ-2",
+      "requirement": "Implement a government-jobs data source (RSS feeds/public APIs) replacing Remotive integration, normalized into a single job list; include caching/refresh behavior.",
+      "reason": "The new client explicitly states it uses a curated static dataset because RSS requires CORS proxies; there is no evidence of RSS/API integration or backend aggregation/caching. Requirement is marked [both] but no backend changes are shown.",
       "evidence": [
-        "backend/main.mo (getCafeInfo returns phone = \"9435212145 / 9126026463\")",
-        "frontend/src/config/cafeInfo.ts (required format is \"9435212145 / 91260 26463\")"
+        "frontend/src/lib/jobs/govJobsClient.ts"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "requirement": "Render all required fields per job and show placeholders (e.g., “—”) when unavailable/missing instead of breaking UI.",
+      "reason": "JobCard only renders vacancies/qualification/lastDate/location blocks when the fields exist (e.g., `{job.vacancies && (...)}`), which hides missing fields rather than showing a placeholder “—”.",
+      "evidence": [
+        "frontend/src/components/jobs/JobCard.tsx"
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "requirement": "Add footer content: Nath Cyber Cafe contact details including phone 9435212145, a WhatsApp chat button/link, and disclaimer text exactly: “This website only provides information and official links. We are not a government organization.”",
+      "reason": "Footer shows contact info from `cafeInfo` and a WhatsApp link, but the exact disclaimer text is not present in the shown snippet, and the required phone number 9435212145 is not evidenced (config summary mentions updated WhatsApp/email, not phone).",
+      "evidence": [
+        "frontend/src/components/site/SiteFooter.tsx",
+        "frontend/src/config/cafeInfo.ts",
+        "frontend/src/config/socialLinks.ts"
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "requirement": "Add generated emblem image `gov-emblem.dim_256x256.png` under `frontend/public/assets/generated` and use it in Jobs page header area.",
+      "reason": "Jobs page references `/assets/generated/gov-emblem.dim_256x256.png`, but the diff summary does not show the image file being added under `frontend/public/assets/generated`.",
+      "evidence": [
+        "frontend/src/pages/JobsPage.tsx"
       ]
     }
   ],
   "hallucinated_features": [
     {
-      "description": "Restricts contact form submission to one message per caller principal (traps with \"Message already submitted\").",
-      "reason": "Requirement only states that contact messages should be persisted; it does not require preventing multiple submissions per user/principal.",
+      "description": "Added/updated social media icons/links (e.g., YouTube) and additional footer attribution elements unrelated to the government jobs page requirements.",
+      "reason": "BuildRequest does not ask for adding new social channels or attribution changes; footer changes go beyond specified contact + WhatsApp + disclaimer needs.",
       "evidence": [
-        "backend/main.mo (submitContact checks contacts.containsKey(caller) and traps)"
+        "frontend/src/components/site/SiteFooter.tsx",
+        "frontend/src/config/socialLinks.ts"
       ]
     },
     {
-      "description": "Adds endpoints to fetch individual contact records by Principal and fetch all contacts.",
-      "reason": "BuildRequest does not ask for an admin/contact-management API or public retrieval of submitted messages.",
+      "description": "Changed business contact configuration values (email/WhatsApp number) without an explicit request.",
+      "reason": "BuildRequest only mandates phone 9435212145 and a working WhatsApp chat link/button; it does not request updating email/WhatsApp numbers.",
       "evidence": [
-        "backend/main.mo (getContact, getAllContacts)"
+        "frontend/src/config/cafeInfo.ts",
+        "frontend/src/components/contact/WhatsAppButton.tsx"
       ]
     }
   ],
-  "confidence": 0.64,
+  "confidence": 0.66,
   "changed_files": [
-    "all_files_summary.json",
-    "backend/main.mo",
     "frontend-file-summaries.txt",
-    "frontend/index.css",
-    "frontend/index.html",
-    "frontend/src/App.tsx",
-    "frontend/src/components/contact/ContactForm.tsx",
-    "frontend/src/components/contact/MapEmbedPlaceholder.tsx",
-    "frontend/src/components/contact/WhatsAppButton.tsx",
-    "frontend/src/components/home/HeroSection.tsx",
-    "frontend/src/components/home/ServicesPreviewSection.tsx",
-    "frontend/src/components/home/WhyChooseUsSection.tsx",
-    "frontend/src/components/services/ServiceCategoryGrid.tsx",
-    "frontend/src/components/site/Container.tsx",
+    "frontend/src/components/jobs/JobCard.tsx",
+    "frontend/src/components/jobs/JobCardSkeleton.tsx",
     "frontend/src/components/site/SiteFooter.tsx",
-    "frontend/src/components/site/SiteHeader.tsx",
-    "frontend/src/components/site/SiteLayout.tsx",
-    "frontend/src/config/cafeInfo.ts",
-    "frontend/src/config/socialLinks.ts",
-    "frontend/src/content/services.ts",
-    "frontend/src/hooks/useActor.ts",
-    "frontend/src/hooks/useInternetIdentity.ts",
-    "frontend/src/hooks/useQueries.ts",
-    "frontend/src/index.css",
-    "frontend/src/main.tsx",
-    "frontend/src/pages/AboutPage.tsx",
-    "frontend/src/pages/ContactPage.tsx",
-    "frontend/src/pages/HomePage.tsx",
-    "frontend/src/pages/ServicesPage.tsx",
-    "frontend/src/seo/Seo.tsx",
-    "frontend/tailwind.config.js",
+    "frontend/src/hooks/useJobs.ts",
+    "frontend/src/lib/jobs/govJobModel.ts",
+    "frontend/src/lib/jobs/govJobsClient.ts",
+    "frontend/src/lib/jobs/jobFiltering.ts",
+    "frontend/src/lib/jobs/officialDomains.ts",
+    "frontend/src/lib/jobs/remotiveClient.ts",
+    "frontend/src/pages/JobsPage.tsx",
     "project_state.json"
   ]
 }

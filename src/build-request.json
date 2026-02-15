@@ -1,191 +1,226 @@
 {
   "kind": "build_request",
-  "title": "Nath Cyber Cafe marketing website (Home/About/Services/Contact) with WhatsApp + contact form",
+  "title": "Convert Jobs page to “Latest Government Jobs” with official apply links, filters, and royal-blue government styling",
   "priority": "normal",
   "requirements": [
     {
       "id": "REQ-1",
-      "text": "Create a modern, professional, responsive multi-page website for the digital service center named “Nath Cyber Cafe” using a clean minimalist layout, royal blue/cyan/white color palette, and modern sans-serif typography.",
+      "text": "Update the existing /jobs route page to be a “Latest Government Jobs” page for Nath Cyber Cafe, with user-facing copy focused on Indian government job vacancies (not general/remote jobs).",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-2"
+          "msg-1"
         ],
         "quotes": [
-          "Create a modern, professional and responsive website for a digital service center named “Nath Cyber Cafe”.\n🔵 Design Style:\nClean and minimalist layout\nRoyal blue, cyan and white color theme\nProfessional and trustworthy look\nMobile-friendly responsive design\nModern sans-serif fonts"
+          "Create a professional and responsive “Latest Government Jobs” page for a website named Nath Cyber Cafe. The page should display updated Indian government job vacancies with official apply links."
         ]
       },
       "acceptanceCriteria": [
-        "Site layout is fully responsive across mobile/tablet/desktop and maintains a clean minimalist look",
-        "Color palette primarily uses royal blue, cyan, and white consistently across components",
-        "Typography uses a modern sans-serif font stack and consistent heading/body scales"
+        "Visiting /jobs shows page title/hero text referencing “Latest Government Jobs” and “Nath Cyber Cafe”.",
+        "The old Remotive/remote-jobs wording is removed from the Jobs page SEO description and visible UI copy."
       ]
     },
     {
       "id": "REQ-2",
-      "text": "Implement routing and pages: Home, About Us, Services, and Contact, with a consistent header/navigation and footer across all pages.",
-      "target": "frontend",
+      "text": "Implement a government-jobs data source and replace the current Remotive jobs integration so the Jobs page fetches and displays Indian government job vacancies from trusted sources (RSS feeds or public APIs where available), normalized into a single job list.",
+      "target": "both",
       "source": {
         "messageIds": [
-          "msg-2"
+          "msg-1"
         ],
         "quotes": [
-          "📄 Additional Pages\nAbout Us Page (Short professional description about trusted digital service center)\nServices Page (Detailed service listing)\nContact Page"
+          "Fetch latest government jobs from trusted official sources (RSS feeds or public APIs if available)."
         ]
       },
       "acceptanceCriteria": [
-        "Users can navigate to Home, About, Services, and Contact from the primary navigation",
-        "Each page has a consistent header/nav and footer",
-        "Routes are direct-loadable (refreshing on a page keeps the user on the same route)"
+        "The Jobs page no longer calls the Remotive API for its primary job list.",
+        "The app fetches government job items from at least one feed/API source and renders them in the UI.",
+        "The fetched job items are normalized into a consistent model used by the UI, even if some fields are missing from the source (missing fields render as “—” rather than breaking the UI).",
+        "Data fetching uses caching/refresh behavior so repeated visits do not refetch excessively (e.g., React Query staleTime or backend caching)."
       ]
     },
     {
       "id": "REQ-3",
-      "text": "Build the Home page hero section with the exact headline “Complete Digital & Online Services Under One Roof”, subheading “Fast, Trusted & Affordable Services”, two CTA buttons (“Contact Now” and “View Services”), and a professional illustration area aligned with a computer/digital services theme.",
+      "text": "Ensure each job card displays the required government-job fields and provides a prominent “Apply Now” button that opens the official notification/application link in a new tab with secure external linking.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-2"
+          "msg-1"
         ],
         "quotes": [
-          "🏠 Home Page\nInclude:\nHero section with headline:\n“Complete Digital & Online Services Under One Roof”\nSubheading:\nFast, Trusted & Affordable Services\nCall to Action Buttons:\n“Contact Now” and “View Services”\nProfessional illustration of computer / digital service theme"
+          "Display for each job: Job Title, Organization Name, Total Vacancies, Qualification, Last Date, Location, Official Apply Link",
+          "Bold “Apply Now” button",
+          "Secure external linking (target=\"_blank\")"
         ]
       },
       "acceptanceCriteria": [
-        "Hero renders the headline and subheading exactly as provided",
-        "“Contact Now” CTA navigates to the Contact page (or contact section)",
-        "“View Services” CTA navigates to the Services page (or services section)",
-        "Hero includes a professional digital/computer-themed illustration rendered from a static asset"
+        "Each rendered job includes: Job Title, Organization Name, Total Vacancies, Qualification, Last Date, Location, and an Apply Now link.",
+        "“Apply Now” opens in a new tab and uses rel=\"noopener noreferrer\".",
+        "If a field is unknown/unavailable from the source, the UI shows a placeholder (e.g., “—”) and continues rendering cleanly."
       ]
     },
     {
       "id": "REQ-4",
-      "text": "Create a Services section (and a detailed Services page) that presents categorized service blocks with the following categories and items: Government & Online Services (New Government Schemes Apply, Job Vacancy Form Filling, Scholarship Apply, Caste Certificate, Income Certificate, Voter ID Card, PAN Card, E-Shram Card, All Online Form Filling Services); Graphic Design Services (Logo Design, Resume / CV Design, Visiting Card Design, Banner & Poster Design, Invitation Card Design, Social Media Post Design, Passport Size Photo Editing); School & College Support (School Project Files, College Assignments, Practical Files, PPT Presentation, Cover Page Design, Typing & Formatting Work).",
+      "text": "Add search and filtering specifically for government jobs: search must filter by job title OR qualification text; category filter options must include exactly: SSC, Railway, Banking, UPSC, State PSC; and the page must support the broader job types requested (Central Government Jobs, State Government Jobs, Railway Jobs, SSC Jobs, Banking Jobs, Defence Jobs, Teaching Jobs) via categories/tags.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-2"
+          "msg-1"
         ],
         "quotes": [
-          "💻 Services Section\nCreate categorized service blocks:\nGovernment & Online Services\nNew Government Schemes Apply\nJob Vacancy Form Filling\nScholarship Apply\nCaste Certificate\nIncome Certificate\nVoter ID Card\nPAN Card\nE-Shram Card\nAll Online Form Filling Services\nGraphic Design Services\nLogo Design\nResume / CV Design\nVisiting Card Design\nBanner & Poster Design\nInvitation Card Design\nSocial Media Post Design\nPassport Size Photo Editing\nSchool & College Support\nSchool Project Files\nCollege Assignments\nPractical Files\nPPT Presentation\nCover Page Design\nTyping & Formatting Work"
+          "Add search bar (filter by job title or qualification).",
+          "Add category filter: SSC, Railway, Banking, UPSC, State PSC",
+          "The page should show: Central Government Jobs, State Government Jobs, Railway Jobs, SSC Jobs, Banking Jobs, Defence Jobs, Teaching Jobs"
         ]
       },
       "acceptanceCriteria": [
-        "All listed categories and service items appear in the UI with the same wording as provided",
-        "Home page includes a services preview/section; Services page includes the full detailed listing",
-        "Service blocks are responsive (stack on mobile, multi-column on larger screens) and visually consistent with the site theme"
+        "Typing in the search bar filters the visible job list by matching against title and qualification fields.",
+        "Category dropdown includes SSC, Railway, Banking, UPSC, State PSC (plus an “All” option).",
+        "Jobs are tagged/categorized so the user can browse the requested government job groupings (Central/State/Railway/SSC/Banking/Defence/Teaching) via visible labels and/or the category system."
       ]
     },
     {
       "id": "REQ-5",
-      "text": "Add a “Why Choose Us” section with the following points: Fast & Trusted Service; Affordable Charges; Proper Guidance; Customer Satisfaction Priority.",
+      "text": "Keep “Load More” pagination, add a visible “Last Updated” timestamp for the job data, and provide user-friendly error handling if the feed/API fails.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-2"
+          "msg-1"
         ],
         "quotes": [
-          "⭐ Why Choose Us Section\nFast & Trusted Service\nAffordable Charges\nProper Guidance\nCustomer Satisfaction Priority"
+          "Add “Load More” button.",
+          "Show “Last Updated” date.",
+          "If API fails, show user-friendly message."
         ]
       },
       "acceptanceCriteria": [
-        "Section displays all four points clearly (e.g., cards or bullet highlights)",
-        "Section is responsive and matches the professional/trustworthy styling"
+        "A “Load More” control incrementally reveals additional jobs without reloading the page.",
+        "The Jobs page displays a “Last Updated” date/time derived from the latest successful fetch (backend response timestamp or client fetch time).",
+        "If data fetching fails, the page shows a clear, non-technical error message and a retry action."
       ]
     },
     {
       "id": "REQ-6",
-      "text": "Implement contact features: display business name “Nath Cyber Cafe”, phone numbers “9435212145 / 91260 26463”, add a WhatsApp chat button, include a contact form with fields (Name, Phone, Message), and show a Google Map embed area using a location placeholder.",
+      "text": "Enforce “official sources only” for apply links by validating/whitelisting official government organization domains before rendering/enabling “Apply Now”, including references such as UPSC, SSC, Railway Recruitment Board, IBPS, and SBI; block or clearly label any non-official links.",
       "target": "both",
       "source": {
         "messageIds": [
-          "msg-2"
+          "msg-1"
         ],
         "quotes": [
-          "📞 Contact Section\nBusiness Name: Nath Cyber Cafe\nPhone Number: 9435212145 / 91260 26463\nWhatsApp Button\nContact Form (Name, Phone, Message)\nGoogle Map Integration (Location placeholder)"
+          "Use official websites for job links such as: Union Public Service Commission, Staff Selection Commission, Railway Recruitment Board, Institute of Banking Personnel Selection, State Bank of India",
+          "Only redirect users to official websites for applying."
         ]
       },
       "acceptanceCriteria": [
-        "Contact page/section displays the business name and phone numbers exactly as provided",
-        "WhatsApp button opens a WhatsApp chat using a wa.me link (or equivalent) to a configured phone number",
-        "Contact form validates required fields and shows a clear success/error state after submission",
-        "Google Map embed area is present and uses a placeholder location (easy to update later)",
-        "Contact form submission is handled by the Motoko backend and persists submitted messages in canister state"
+        "The system validates job apply URLs against an explicit allowlist of official domains (maintained in code/config).",
+        "If a job item’s apply URL is not on the allowlist, the UI does not present it as a valid “Apply Now” link (e.g., disables the button or shows “Official link unavailable”).",
+        "Allowed official links open in a new tab with rel=\"noopener noreferrer\"."
       ]
     },
     {
       "id": "REQ-7",
-      "text": "Add social media integration by rendering a set of social icons/links in the footer (and/or contact area) with configurable URLs (placeholders by default) for common platforms.",
+      "text": "Update the Jobs page UI to a professional, trustworthy, government-style layout using a royal blue + white theme, with a header area that includes a government-style icon/emblem and card-based listings with a bold “Apply Now” button.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-2"
+          "msg-1"
         ],
         "quotes": [
-          "Social media integration"
+          "Royal blue + white color theme",
+          "Government-style clean layout",
+          "Card-based job listing",
+          "Government job icon or emblem in header"
         ]
       },
       "acceptanceCriteria": [
-        "Social links are visible and styled consistently with the theme",
-        "URLs are centralized/configurable and default to placeholders (non-breaking) until real links are provided"
+        "The Jobs page visually uses royal blue and white as the primary theme colors (buttons, accents, header elements).",
+        "The page remains fully responsive on mobile/tablet/desktop.",
+        "A government-style emblem/icon appears in the Jobs page header area.",
+        "Job listings are presented as cards with a prominent, high-contrast “Apply Now” button."
       ]
     },
     {
       "id": "REQ-8",
-      "text": "Implement SEO-friendly structure across pages: semantic headings, per-page document titles and meta descriptions, Open Graph/Twitter preview tags, and basic LocalBusiness structured data (JSON-LD) for “Nath Cyber Cafe” using the provided phone numbers.",
+      "text": "Add the requested footer content for this government jobs experience: show Nath Cyber Cafe contact details (including phone 9435212145), a WhatsApp chat button, and the disclaimer text exactly: “This website only provides information and official links. We are not a government organization.”",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-2"
+          "msg-1"
         ],
         "quotes": [
-          "⚙️ Technical Requirements\nSEO optimized structure"
+          "Add contact details: Nath Cyber Cafe Phone: 9435212145 WhatsApp Chat Button",
+          "Add disclaimer: “This website only provides information and official links. We are not a government organization.”"
         ]
       },
       "acceptanceCriteria": [
-        "Each page sets an appropriate document title",
-        "Meta description and social preview tags are present for main pages",
-        "Pages use semantic structure (single H1 per page, logical H2/H3)",
-        "LocalBusiness JSON-LD is included and references “Nath Cyber Cafe” and the provided phone numbers"
+        "The Jobs page (or site footer visible on the Jobs page) clearly displays Nath Cyber Cafe contact details and a working WhatsApp chat link/button.",
+        "The disclaimer text is present verbatim and visible on the Jobs page.",
+        "All user-facing text is in English."
       ]
     },
     {
       "id": "REQ-9",
-      "text": "Ensure fast loading and a secure, professional layout by optimizing assets (compressed images), avoiding unnecessary heavy libraries, and providing a polished UI with accessible color contrast and focus states.",
+      "text": "Add/adjust SEO metadata for the government jobs page to reflect “Latest Government Jobs” and ensure fast-loading behavior (avoid heavy client processing), keeping code clean and well-commented around data mapping, filtering, and pagination.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-2"
+          "msg-1"
         ],
         "quotes": [
+          "SEO optimized",
           "Fast loading",
-          "Secure and professional layout"
+          "Clean and commented code"
         ]
       },
       "acceptanceCriteria": [
-        "Hero illustration and any added images are appropriately sized/compressed and served as static assets",
-        "UI components have visible focus states and acceptable contrast for text and interactive elements",
-        "No console errors on load; page interactions feel responsive on mobile"
+        "/jobs SEO title and description mention government jobs and Nath Cyber Cafe.",
+        "Filtering and pagination remain performant with typical feed sizes (no noticeable UI lag when searching/filtering).",
+        "Key parsing/mapping/filtering logic is documented with concise comments."
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "text": "Add the generated government-style emblem image as a static asset under frontend/public/assets/generated and use it in the Jobs page header area.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Government job icon or emblem in header"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The emblem image exists in frontend/public/assets/generated with the filename specified in imageRequirements.required.",
+        "The Jobs page header renders the emblem with appropriate alt text and responsive sizing."
       ]
     }
   ],
   "constraints": [
-    "Do not edit files under frontend/src/components/ui (compose existing UI components instead).",
-    "Do not edit immutable hook/bootstrap files: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx.",
-    "Backend must remain a single Motoko actor with all logic in backend/main.mo; only add backend/migration.mo if an upgrade-safe state migration is required."
+    "Do not edit any files under frontend/src/components/ui (read-only UI components must be composed, not modified).",
+    "Do not edit the immutable auth/actor bootstrap hooks: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx.",
+    "Backend must remain a single Motoko actor (all logic in backend/main.mo); add backend/migration.mo only if state schema changes require it."
   ],
   "nonGoals": [
-    "Do not implement third-party authentication beyond Internet Identity (not required for this marketing site).",
-    "Do not add real-time chat or WebSocket-based features.",
-    "Do not integrate external databases or non-IC backend services.",
-    "Do not implement payments or e-commerce features."
+    "Do not implement the optional advanced features in this request: email notification subscription, daily auto-update system, admin dashboard to manually add jobs, PDF notification download button.",
+    "Do not add third-party authentication providers (only Internet Identity is supported).",
+    "Do not add real-time features (WebSockets/chat/push notifications)."
   ],
   "imageRequirements": {
     "required": [
-      "Professional flat/vector illustration of a computer and digital services desk scene in royal blue/cyan/white (hero-illustration.dim_1200x800.png)",
-      "Simple minimalist logo mark for “Nath Cyber Cafe” in royal blue/cyan/white on transparent background (logo.dim_512x512.png)",
-      "Favicon icon derived from the logo mark, flat and high-contrast (favicon.dim_64x64.png)"
+      "Government-style circular emblem icon with Ashoka-inspired silhouette and laurel wreath, flat vector look, royal blue on white (gov-emblem.dim_256x256.png)"
     ],
     "edits": []
+  },
+  "userProfileUpdate": {
+    "goalsToAdd": [],
+    "goalsToRemove": [],
+    "preferencesToAdd": [],
+    "preferencesToRemove": [],
+    "miscToAdd": [],
+    "miscToRemove": [],
+    "fieldsToSet": {},
+    "fieldsToDelete": []
   }
 }

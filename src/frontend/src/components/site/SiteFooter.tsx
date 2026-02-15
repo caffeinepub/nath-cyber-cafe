@@ -1,5 +1,5 @@
-import { SiFacebook, SiX, SiInstagram, SiLinkedin } from 'react-icons/si';
-import { MessageCircle } from 'lucide-react';
+import { SiFacebook, SiX, SiInstagram, SiLinkedin, SiYoutube } from 'react-icons/si';
+import { MessageCircle, Heart } from 'lucide-react';
 import Container from './Container';
 import { cafeInfo } from '../../config/cafeInfo';
 import { socialLinks } from '../../config/socialLinks';
@@ -49,6 +49,11 @@ export default function SiteFooter() {
                 </a>
               </li>
               <li>
+                <a href="#/jobs" className="text-muted-foreground hover:text-primary transition-colors">
+                  Government Jobs
+                </a>
+              </li>
+              <li>
                 <a href="#/contact" className="text-muted-foreground hover:text-primary transition-colors">
                   Contact
                 </a>
@@ -72,6 +77,7 @@ export default function SiteFooter() {
                   WhatsApp: {cafeInfo.whatsapp}
                 </a>
               </li>
+              <li>✉️ {cafeInfo.email}</li>
             </ul>
             <div className="flex items-center space-x-4 mt-4">
               <a
@@ -110,6 +116,15 @@ export default function SiteFooter() {
               >
                 <SiLinkedin size={20} />
               </a>
+              <a
+                href={socialLinks.youtube}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-primary transition-colors"
+                aria-label="YouTube"
+              >
+                <SiYoutube size={20} />
+              </a>
             </div>
           </div>
         </div>
@@ -118,8 +133,8 @@ export default function SiteFooter() {
           <p>
             © {currentYear} {cafeInfo.name}. All rights reserved.
           </p>
-          <p className="mt-2">
-            Built with ❤️ using{' '}
+          <p className="mt-2 flex items-center justify-center gap-1">
+            Built with <Heart className="h-4 w-4 text-destructive fill-destructive" /> using{' '}
             <a
               href={`https://caffeine.ai/?utm_source=Caffeine-footer&utm_medium=referral&utm_content=${appIdentifier}`}
               target="_blank"

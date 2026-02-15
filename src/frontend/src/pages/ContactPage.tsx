@@ -11,7 +11,7 @@ export default function ContactPage() {
     <>
       <Seo
         title="Contact Us"
-        description="Get in touch with Nath Cyber Cafe. Call us at 9435212145 / 91260 26463 or send us a message."
+        description={`Get in touch with Nath Cyber Cafe. Call us at ${cafeInfo.phone} or email us at ${cafeInfo.email}.`}
         path="/contact"
       />
       
