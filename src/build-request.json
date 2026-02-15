@@ -1,0 +1,191 @@
+{
+  "kind": "build_request",
+  "title": "Nath Cyber Cafe marketing website (Home/About/Services/Contact) with WhatsApp + contact form",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Create a modern, professional, responsive multi-page website for the digital service center named “Nath Cyber Cafe” using a clean minimalist layout, royal blue/cyan/white color palette, and modern sans-serif typography.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Create a modern, professional and responsive website for a digital service center named “Nath Cyber Cafe”.\n🔵 Design Style:\nClean and minimalist layout\nRoyal blue, cyan and white color theme\nProfessional and trustworthy look\nMobile-friendly responsive design\nModern sans-serif fonts"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Site layout is fully responsive across mobile/tablet/desktop and maintains a clean minimalist look",
+        "Color palette primarily uses royal blue, cyan, and white consistently across components",
+        "Typography uses a modern sans-serif font stack and consistent heading/body scales"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Implement routing and pages: Home, About Us, Services, and Contact, with a consistent header/navigation and footer across all pages.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "📄 Additional Pages\nAbout Us Page (Short professional description about trusted digital service center)\nServices Page (Detailed service listing)\nContact Page"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Users can navigate to Home, About, Services, and Contact from the primary navigation",
+        "Each page has a consistent header/nav and footer",
+        "Routes are direct-loadable (refreshing on a page keeps the user on the same route)"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Build the Home page hero section with the exact headline “Complete Digital & Online Services Under One Roof”, subheading “Fast, Trusted & Affordable Services”, two CTA buttons (“Contact Now” and “View Services”), and a professional illustration area aligned with a computer/digital services theme.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "🏠 Home Page\nInclude:\nHero section with headline:\n“Complete Digital & Online Services Under One Roof”\nSubheading:\nFast, Trusted & Affordable Services\nCall to Action Buttons:\n“Contact Now” and “View Services”\nProfessional illustration of computer / digital service theme"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Hero renders the headline and subheading exactly as provided",
+        "“Contact Now” CTA navigates to the Contact page (or contact section)",
+        "“View Services” CTA navigates to the Services page (or services section)",
+        "Hero includes a professional digital/computer-themed illustration rendered from a static asset"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Create a Services section (and a detailed Services page) that presents categorized service blocks with the following categories and items: Government & Online Services (New Government Schemes Apply, Job Vacancy Form Filling, Scholarship Apply, Caste Certificate, Income Certificate, Voter ID Card, PAN Card, E-Shram Card, All Online Form Filling Services); Graphic Design Services (Logo Design, Resume / CV Design, Visiting Card Design, Banner & Poster Design, Invitation Card Design, Social Media Post Design, Passport Size Photo Editing); School & College Support (School Project Files, College Assignments, Practical Files, PPT Presentation, Cover Page Design, Typing & Formatting Work).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "💻 Services Section\nCreate categorized service blocks:\nGovernment & Online Services\nNew Government Schemes Apply\nJob Vacancy Form Filling\nScholarship Apply\nCaste Certificate\nIncome Certificate\nVoter ID Card\nPAN Card\nE-Shram Card\nAll Online Form Filling Services\nGraphic Design Services\nLogo Design\nResume / CV Design\nVisiting Card Design\nBanner & Poster Design\nInvitation Card Design\nSocial Media Post Design\nPassport Size Photo Editing\nSchool & College Support\nSchool Project Files\nCollege Assignments\nPractical Files\nPPT Presentation\nCover Page Design\nTyping & Formatting Work"
+        ]
+      },
+      "acceptanceCriteria": [
+        "All listed categories and service items appear in the UI with the same wording as provided",
+        "Home page includes a services preview/section; Services page includes the full detailed listing",
+        "Service blocks are responsive (stack on mobile, multi-column on larger screens) and visually consistent with the site theme"
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Add a “Why Choose Us” section with the following points: Fast & Trusted Service; Affordable Charges; Proper Guidance; Customer Satisfaction Priority.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "⭐ Why Choose Us Section\nFast & Trusted Service\nAffordable Charges\nProper Guidance\nCustomer Satisfaction Priority"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Section displays all four points clearly (e.g., cards or bullet highlights)",
+        "Section is responsive and matches the professional/trustworthy styling"
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Implement contact features: display business name “Nath Cyber Cafe”, phone numbers “9435212145 / 91260 26463”, add a WhatsApp chat button, include a contact form with fields (Name, Phone, Message), and show a Google Map embed area using a location placeholder.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "📞 Contact Section\nBusiness Name: Nath Cyber Cafe\nPhone Number: 9435212145 / 91260 26463\nWhatsApp Button\nContact Form (Name, Phone, Message)\nGoogle Map Integration (Location placeholder)"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Contact page/section displays the business name and phone numbers exactly as provided",
+        "WhatsApp button opens a WhatsApp chat using a wa.me link (or equivalent) to a configured phone number",
+        "Contact form validates required fields and shows a clear success/error state after submission",
+        "Google Map embed area is present and uses a placeholder location (easy to update later)",
+        "Contact form submission is handled by the Motoko backend and persists submitted messages in canister state"
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "text": "Add social media integration by rendering a set of social icons/links in the footer (and/or contact area) with configurable URLs (placeholders by default) for common platforms.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Social media integration"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Social links are visible and styled consistently with the theme",
+        "URLs are centralized/configurable and default to placeholders (non-breaking) until real links are provided"
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "text": "Implement SEO-friendly structure across pages: semantic headings, per-page document titles and meta descriptions, Open Graph/Twitter preview tags, and basic LocalBusiness structured data (JSON-LD) for “Nath Cyber Cafe” using the provided phone numbers.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "⚙️ Technical Requirements\nSEO optimized structure"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Each page sets an appropriate document title",
+        "Meta description and social preview tags are present for main pages",
+        "Pages use semantic structure (single H1 per page, logical H2/H3)",
+        "LocalBusiness JSON-LD is included and references “Nath Cyber Cafe” and the provided phone numbers"
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "text": "Ensure fast loading and a secure, professional layout by optimizing assets (compressed images), avoiding unnecessary heavy libraries, and providing a polished UI with accessible color contrast and focus states.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Fast loading",
+          "Secure and professional layout"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Hero illustration and any added images are appropriately sized/compressed and served as static assets",
+        "UI components have visible focus states and acceptable contrast for text and interactive elements",
+        "No console errors on load; page interactions feel responsive on mobile"
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not edit files under frontend/src/components/ui (compose existing UI components instead).",
+    "Do not edit immutable hook/bootstrap files: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx.",
+    "Backend must remain a single Motoko actor with all logic in backend/main.mo; only add backend/migration.mo if an upgrade-safe state migration is required."
+  ],
+  "nonGoals": [
+    "Do not implement third-party authentication beyond Internet Identity (not required for this marketing site).",
+    "Do not add real-time chat or WebSocket-based features.",
+    "Do not integrate external databases or non-IC backend services.",
+    "Do not implement payments or e-commerce features."
+  ],
+  "imageRequirements": {
+    "required": [
+      "Professional flat/vector illustration of a computer and digital services desk scene in royal blue/cyan/white (hero-illustration.dim_1200x800.png)",
+      "Simple minimalist logo mark for “Nath Cyber Cafe” in royal blue/cyan/white on transparent background (logo.dim_512x512.png)",
+      "Favicon icon derived from the logo mark, flat and high-contrast (favicon.dim_64x64.png)"
+    ],
+    "edits": []
+  }
+}

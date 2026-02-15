@@ -1,0 +1,323 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Nath Cyber Cafe marketing website (multi-page) frontend",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Implement a modern, minimalist, responsive site theme (royal blue/cyan/white) with consistent typography and layout primitives.",
+      "acceptanceCriteria": [
+        "Site layout is fully responsive across mobile/tablet/desktop and maintains a clean minimalist look",
+        "Color palette primarily uses royal blue, cyan, and white consistently across components",
+        "Typography uses a modern sans-serif font stack and consistent heading/body scales"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "create",
+          "description": "Create global styles: set a modern sans-serif font stack, define theme CSS variables and Tailwind base styles for royal blue/cyan/white palette, and ensure accessible focus/selection styles."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Adjust Tailwind theme tokens (via CSS variables / extended colors) to support the royal blue/cyan/white brand palette and consistent radii/shadows for a clean minimalist UI."
+        },
+        {
+          "path": "frontend/src/components/site/Container.tsx",
+          "operation": "create",
+          "description": "Create a small layout primitive for consistent responsive page width/padding and section spacing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Add routing and page structure for Home, About, Services, Contact with shared header/nav and footer.",
+      "acceptanceCriteria": [
+        "Users can navigate to Home, About, Services, and Contact from the primary navigation",
+        "Each page has a consistent header/nav and footer",
+        "Routes are direct-loadable (refreshing on a page keeps the user on the same route)"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "create",
+          "description": "Create the app root wiring with a router and shared layout wrapper for all pages (header + footer)."
+        },
+        {
+          "path": "frontend/src/router/AppRouter.tsx",
+          "operation": "create",
+          "description": "Implement route definitions for Home, About, Services, and Contact using a refresh-safe routing strategy (e.g., hash-based routing) to ensure direct-loadable navigation."
+        },
+        {
+          "path": "frontend/src/components/site/SiteHeader.tsx",
+          "operation": "create",
+          "description": "Create the consistent site header with logo and primary navigation links to Home/About/Services/Contact. Use shadcn-ui components (e.g., Button) for nav CTAs where appropriate. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/site/SiteFooter.tsx",
+          "operation": "create",
+          "description": "Create the consistent site footer area with social links, contact quick info, and brand styling. Use shadcn-ui components (e.g., Button) for icon/link affordances as needed. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/site/SiteLayout.tsx",
+          "operation": "create",
+          "description": "Create a shared layout component that renders SiteHeader, page content, and SiteFooter consistently across all routes."
+        },
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "create",
+          "description": "Create the Home page and wire required sections (hero, services preview, why choose us, contact CTA)."
+        },
+        {
+          "path": "frontend/src/pages/AboutPage.tsx",
+          "operation": "create",
+          "description": "Create the About Us page with a short professional description of Nath Cyber Cafe as a trusted digital service center."
+        },
+        {
+          "path": "frontend/src/pages/ServicesPage.tsx",
+          "operation": "create",
+          "description": "Create the Services page with the full categorized service listing."
+        },
+        {
+          "path": "frontend/src/pages/ContactPage.tsx",
+          "operation": "create",
+          "description": "Create the Contact page including business info, WhatsApp button, contact form, and map embed placeholder."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Build the Home page hero with exact copy, CTAs to Contact/Services, and a professional digital-services illustration from a static asset.",
+      "acceptanceCriteria": [
+        "Hero renders the headline and subheading exactly as provided",
+        "“Contact Now” CTA navigates to the Contact page (or contact section)",
+        "“View Services” CTA navigates to the Services page (or services section)",
+        "Hero includes a professional digital/computer-themed illustration rendered from a static asset"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/assets/generated/hero-illustration.dim_1200x800.png",
+          "operation": "create",
+          "description": "Add the generated hero illustration asset at the exact path for use by the Home hero section."
+        },
+        {
+          "path": "frontend/src/components/home/HeroSection.tsx",
+          "operation": "create",
+          "description": "Implement the hero section UI using the exact headline “Complete Digital & Online Services Under One Roof” and subheading “Fast, Trusted & Affordable Services”, plus two CTAs (“Contact Now”, “View Services”) wired to routing. Use shadcn-ui components (e.g., Button) for CTA styling. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "modify",
+          "description": "Wire HeroSection into the Home page and ensure the illustration is rendered from frontend/public/assets/generated/hero-illustration.dim_1200x800.png."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Render categorized service blocks on Home (preview) and Services (detailed) with the exact provided categories and item wording.",
+      "acceptanceCriteria": [
+        "All listed categories and service items appear in the UI with the same wording as provided",
+        "Home page includes a services preview/section; Services page includes the full detailed listing",
+        "Service blocks are responsive (stack on mobile, multi-column on larger screens) and visually consistent with the site theme"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/content/services.ts",
+          "operation": "create",
+          "description": "Centralize the services categories and items as a typed content module to ensure wording matches exactly and is reused across Home preview and Services page."
+        },
+        {
+          "path": "frontend/src/components/services/ServiceCategoryGrid.tsx",
+          "operation": "create",
+          "description": "Create a responsive categorized services grid component (cards/sections) for reuse. Use shadcn-ui components (e.g., Card) to provide consistent blocks. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/home/ServicesPreviewSection.tsx",
+          "operation": "create",
+          "description": "Create the Home page services preview section that reuses the shared services grid but shows a subset/summary while keeping wording consistent."
+        },
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "modify",
+          "description": "Add ServicesPreviewSection to the Home page below the hero."
+        },
+        {
+          "path": "frontend/src/pages/ServicesPage.tsx",
+          "operation": "modify",
+          "description": "Render the full detailed service listing using ServiceCategoryGrid and the centralized content module."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Add a responsive “Why Choose Us” section with the four specified points.",
+      "acceptanceCriteria": [
+        "Section displays all four points clearly (e.g., cards or bullet highlights)",
+        "Section is responsive and matches the professional/trustworthy styling"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/home/WhyChooseUsSection.tsx",
+          "operation": "create",
+          "description": "Implement the “Why Choose Us” section showing: Fast & Trusted Service; Affordable Charges; Proper Guidance; Customer Satisfaction Priority. Use shadcn-ui components (e.g., Card) for consistent highlights. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "modify",
+          "description": "Wire WhyChooseUsSection into the Home page."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Implement Contact page features: exact business info, WhatsApp chat button, validated contact form with success/error states, and a Google Map embed placeholder area.",
+      "acceptanceCriteria": [
+        "Contact page/section displays the business name and phone numbers exactly as provided",
+        "WhatsApp button opens a WhatsApp chat using a wa.me link (or equivalent) to a configured phone number",
+        "Contact form validates required fields and shows a clear success/error state after submission",
+        "Google Map embed area is present and uses a placeholder location (easy to update later)",
+        "Contact form submission is handled by the Motoko backend and persists submitted messages in canister state"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/config/cafeInfo.ts",
+          "operation": "create",
+          "description": "Centralize cafe display info (name, phone numbers, default WhatsApp number, map placeholder URL/embed config) for reuse in header/footer/contact sections."
+        },
+        {
+          "path": "frontend/src/hooks/useCafeInfo.ts",
+          "operation": "create",
+          "description": "Create a small data hook to read cafe info from the backend interface (e.g., getCafeInfo) and fall back to frontend defaults if unavailable."
+        },
+        {
+          "path": "frontend/src/hooks/useSubmitContact.ts",
+          "operation": "create",
+          "description": "Create a hook that submits contact form data to the backend interface (submitContact) and exposes loading/success/error state for the UI."
+        },
+        {
+          "path": "frontend/src/components/contact/WhatsAppButton.tsx",
+          "operation": "create",
+          "description": "Implement a WhatsApp chat button that builds a wa.me (or equivalent) link from configured WhatsApp/phone number. Use shadcn-ui Button for consistent styling. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/contact/ContactForm.tsx",
+          "operation": "create",
+          "description": "Implement the contact form with fields (Name, Phone, Message), required validation, and clear success/error UI after submit. Use shadcn-ui form inputs (e.g., Input, Textarea, Button) where appropriate. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/contact/MapEmbedPlaceholder.tsx",
+          "operation": "create",
+          "description": "Create a Google Map embed area component that uses a placeholder location (easy to update later) and is responsive."
+        },
+        {
+          "path": "frontend/src/pages/ContactPage.tsx",
+          "operation": "modify",
+          "description": "Render the business name “Nath Cyber Cafe”, phone numbers “9435212145 / 91260 26463” exactly, include WhatsAppButton, ContactForm, and MapEmbedPlaceholder laid out responsively."
+        }
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "summary": "Add social media icon/link set in the footer (and/or contact area) with centralized placeholder URLs.",
+      "acceptanceCriteria": [
+        "Social links are visible and styled consistently with the theme",
+        "URLs are centralized/configurable and default to placeholders (non-breaking) until real links are provided"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/config/socialLinks.ts",
+          "operation": "create",
+          "description": "Create a centralized configuration object for common social platforms with placeholder URLs (non-breaking defaults)."
+        },
+        {
+          "path": "frontend/src/components/site/SocialLinks.tsx",
+          "operation": "create",
+          "description": "Create a social links/icon strip component that reads from the centralized config and renders accessible links. Use shadcn-ui Button (or similar) for consistent icon-button styling if applicable. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/site/SiteFooter.tsx",
+          "operation": "modify",
+          "description": "Wire SocialLinks into the footer and ensure styling matches the royal blue/cyan/white theme."
+        },
+        {
+          "path": "frontend/src/pages/ContactPage.tsx",
+          "operation": "modify",
+          "description": "Optionally include SocialLinks near contact details (if desired) without duplicating configuration."
+        }
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "summary": "Implement SEO-friendly per-page titles/meta, Open Graph/Twitter tags, semantic headings, and LocalBusiness JSON-LD for Nath Cyber Cafe with provided phone numbers.",
+      "acceptanceCriteria": [
+        "Each page sets an appropriate document title",
+        "Meta description and social preview tags are present for main pages",
+        "Pages use semantic structure (single H1 per page, logical H2/H3)",
+        "LocalBusiness JSON-LD is included and references “Nath Cyber Cafe” and the provided phone numbers"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/seo/Seo.tsx",
+          "operation": "create",
+          "description": "Create a lightweight SEO component that sets document title, meta description, Open Graph/Twitter tags, and injects LocalBusiness JSON-LD (including “Nath Cyber Cafe” and phone numbers) without adding heavy dependencies."
+        },
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "modify",
+          "description": "Add Seo usage with Home-specific title/description and ensure semantic headings (single H1, logical H2/H3)."
+        },
+        {
+          "path": "frontend/src/pages/AboutPage.tsx",
+          "operation": "modify",
+          "description": "Add Seo usage with About-specific title/description and ensure semantic headings (single H1, logical H2/H3)."
+        },
+        {
+          "path": "frontend/src/pages/ServicesPage.tsx",
+          "operation": "modify",
+          "description": "Add Seo usage with Services-specific title/description and ensure semantic headings (single H1, logical H2/H3)."
+        },
+        {
+          "path": "frontend/src/pages/ContactPage.tsx",
+          "operation": "modify",
+          "description": "Add Seo usage with Contact-specific title/description and ensure semantic headings (single H1, logical H2/H3)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "summary": "Ensure fast loading and a polished accessible UI: optimized static assets, minimal dependencies, strong focus states, and no console errors.",
+      "acceptanceCriteria": [
+        "Hero illustration and any added images are appropriately sized/compressed and served as static assets",
+        "UI components have visible focus states and acceptable contrast for text and interactive elements",
+        "No console errors on load; page interactions feel responsive on mobile"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/assets/generated/logo.dim_512x512.png",
+          "operation": "create",
+          "description": "Add the generated logo asset at the exact path for use in header/footer branding."
+        },
+        {
+          "path": "frontend/public/assets/generated/favicon.dim_64x64.png",
+          "operation": "create",
+          "description": "Add the generated favicon asset at the exact path for use by the document head."
+        },
+        {
+          "path": "frontend/index.html",
+          "operation": "modify",
+          "description": "Wire the favicon from frontend/public/assets/generated/favicon.dim_64x64.png and ensure baseline meta tags exist for responsive rendering."
+        },
+        {
+          "path": "frontend/src/components/site/SiteHeader.tsx",
+          "operation": "modify",
+          "description": "Render brand logo using frontend/public/assets/generated/logo.dim_512x512.png and ensure interactive elements have clear focus styles (leveraging global/tailwind focus-visible styles)."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Ensure accessible focus-visible ring styles, link hover/focus states, and sufficient default text contrast to support a polished professional UI without additional heavy libraries."
+        }
+      ]
+    }
+  ]
+}

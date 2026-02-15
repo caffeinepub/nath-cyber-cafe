@@ -1,0 +1,194 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-create-a-modern-professional-responsive-multi-page-website-for-the-digital-service-center-named-nath-cyber-cafe-using-a-clean-minimalist-layout-royal-blue-cyan-white-color-palette-and-modern-sans-serif-typography",
+      "featureTitle": "Create a modern, professional, responsive multi-page website for the digital service center named “Nath Cyber Cafe” using a clean minimalist layout, royal blue/cyan/white color palette, and modern sans-serif typography.",
+      "files": [
+        "frontend/src/components/site/Container.tsx",
+        "frontend/src/index.css",
+        "frontend/tailwind.config.js"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-routing-and-pages-home-about-us-services-and-contact-with-a-consistent-header-navigation-and-footer-across-all-pages",
+      "featureTitle": "Implement routing and pages: Home, About Us, Services, and Contact, with a consistent header/navigation and footer across all pages.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/site/SiteFooter.tsx",
+        "frontend/src/components/site/SiteHeader.tsx",
+        "frontend/src/components/site/SiteLayout.tsx",
+        "frontend/src/pages/AboutPage.tsx",
+        "frontend/src/pages/ContactPage.tsx",
+        "frontend/src/pages/HomePage.tsx",
+        "frontend/src/pages/ServicesPage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-build-the-home-page-hero-section-with-the-exact-headline-complete-digital-online-services-under-one-roof-subheading-fast-trusted-affordable-services-two-cta-buttons-contact-now-and-view-services-and-a-professional-illustration-area-aligned-with-a-computer-digital-services-theme",
+      "featureTitle": "Build the Home page hero section with the exact headline “Complete Digital & Online Services Under One Roof”, subheading “Fast, Trusted & Affordable Services”, two CTA buttons (“Contact Now” and “View Services”), and a professional illustration area aligned with a computer/digital services theme.",
+      "files": [
+        "frontend/src/components/home/HeroSection.tsx",
+        "frontend/src/pages/HomePage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-a-services-section-and-a-detailed-services-page-that-presents-categorized-service-blocks-with-the-following-categories-and-items-government-online-services-new-government-schemes-apply-job-vacancy-form-filling-scholarship-apply-caste-certificate-income-certificate-voter-id-card-pan-card-e-shram-card-all-online-form-filling-services-graphic-design-services-logo-design-resume-cv-design-visiting-card-design-banner-poster-design-invitation-card-design-social-media-post-design-passport-size-photo-editing-school-college-support-school-project-files-college-assignments-practical-files-ppt-presentation-cover-page-design-typing-formatting-work",
+      "featureTitle": "Create a Services section (and a detailed Services page) that presents categorized service blocks with the following categories and items: Government & Online Services (New Government Schemes Apply, Job Vacancy Form Filling, Scholarship Apply, Caste Certificate, Income Certificate, Voter ID Card, PAN Card, E-Shram Card, All Online Form Filling Services); Graphic Design Services (Logo Design, Resume / CV Design, Visiting Card Design, Banner & Poster Design, Invitation Card Design, Social Media Post Design, Passport Size Photo Editing); School & College Support (School Project Files, College Assignments, Practical Files, PPT Presentation, Cover Page Design, Typing & Formatting Work).",
+      "files": [
+        "frontend/src/components/home/ServicesPreviewSection.tsx",
+        "frontend/src/components/services/ServiceCategoryGrid.tsx",
+        "frontend/src/content/services.ts",
+        "frontend/src/pages/HomePage.tsx",
+        "frontend/src/pages/ServicesPage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-a-why-choose-us-section-with-the-following-points-fast-trusted-service-affordable-charges-proper-guidance-customer-satisfaction-priority",
+      "featureTitle": "Add a “Why Choose Us” section with the following points: Fast & Trusted Service; Affordable Charges; Proper Guidance; Customer Satisfaction Priority.",
+      "files": [
+        "frontend/src/components/home/WhyChooseUsSection.tsx",
+        "frontend/src/pages/HomePage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-contact-features-display-business-name-nath-cyber-cafe-phone-numbers-9435212145-91260-26463-add-a-whatsapp-chat-button-include-a-contact-form-with-fields-name-phone-message-and-show-a-google-map-embed-area-using-a-location-placeholder",
+      "featureTitle": "Implement contact features: display business name “Nath Cyber Cafe”, phone numbers “9435212145 / 91260 26463”, add a WhatsApp chat button, include a contact form with fields (Name, Phone, Message), and show a Google Map embed area using a location placeholder.",
+      "files": [
+        "frontend/src/components/contact/ContactForm.tsx",
+        "frontend/src/components/contact/MapEmbedPlaceholder.tsx",
+        "frontend/src/components/contact/WhatsAppButton.tsx",
+        "frontend/src/config/cafeInfo.ts",
+        "frontend/src/pages/ContactPage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-6"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-social-media-integration-by-rendering-a-set-of-social-icons-links-in-the-footer-and-or-contact-area-with-configurable-urls-placeholders-by-default-for-common-platforms",
+      "featureTitle": "Add social media integration by rendering a set of social icons/links in the footer (and/or contact area) with configurable URLs (placeholders by default) for common platforms.",
+      "files": [
+        "frontend/src/components/site/SiteFooter.tsx",
+        "frontend/src/config/socialLinks.ts",
+        "frontend/src/pages/ContactPage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-7"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-seo-friendly-structure-across-pages-semantic-headings-per-page-document-titles-and-meta-descriptions-open-graph-twitter-preview-tags-and-basic-localbusiness-structured-data-json-ld-for-nath-cyber-cafe-using-the-provided-phone-numbers",
+      "featureTitle": "Implement SEO-friendly structure across pages: semantic headings, per-page document titles and meta descriptions, Open Graph/Twitter preview tags, and basic LocalBusiness structured data (JSON-LD) for “Nath Cyber Cafe” using the provided phone numbers.",
+      "files": [
+        "frontend/src/pages/AboutPage.tsx",
+        "frontend/src/pages/ContactPage.tsx",
+        "frontend/src/pages/HomePage.tsx",
+        "frontend/src/pages/ServicesPage.tsx",
+        "frontend/src/seo/Seo.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-8"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-ensure-fast-loading-and-a-secure-professional-layout-by-optimizing-assets-compressed-images-avoiding-unnecessary-heavy-libraries-and-providing-a-polished-ui-with-accessible-color-contrast-and-focus-states",
+      "featureTitle": "Ensure fast loading and a secure, professional layout by optimizing assets (compressed images), avoiding unnecessary heavy libraries, and providing a polished UI with accessible color contrast and focus states.",
+      "files": [
+        "frontend/index.html",
+        "frontend/src/components/site/SiteHeader.tsx",
+        "frontend/src/index.css"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-9"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

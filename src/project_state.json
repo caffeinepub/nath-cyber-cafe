@@ -1,0 +1,136 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "Build a modern, professional, responsive marketing website for the digital service center “Nath Cyber Cafe” with a clean minimalist royal blue/cyan/white theme, multi-page structure (Home/About/Services/Contact), service listings, contact/WhatsApp, map placeholder, social media integration, SEO and performance focus.",
+  "architectural_notes": [
+    "Multi-page marketing site: Home, About, Services, Contact with consistent header/footer and responsive layout.",
+    "Include SEO basics (semantic HTML, meta tags, proper headings) and performance-minded assets.",
+    "Include WhatsApp deep link/chat button and social media links.",
+    "Google Maps integration to use a placeholder location until final address is provided."
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "imageRequirements": "## Required Images\n- Professional flat/vector illustration of a computer and digital services desk scene in royal blue/cyan/white (hero-illustration.dim_1200x800.png)\n- Simple minimalist logo mark for “Nath Cyber Cafe” in royal blue/cyan/white on transparent background (logo.dim_512x512.png)\n- Favicon icon derived from the logo mark, flat and high-contrast (favicon.dim_64x64.png)",
+  "existing_features": [
+    {
+      "id": "feature-create-a-modern-professional-responsive-multi-page-website-for-the-digital-service-center-named-nath-cyber-cafe-using-a-clean-minimalist-layout-royal-blue-cyan-white-color-palette-and-modern-sans-serif-typography",
+      "title": "Create a modern, professional, responsive multi-page website for the digital service center named “Nath Cyber Cafe” using a clean minimalist layout, royal blue/cyan/white color palette, and modern sans-serif typography.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-routing-and-pages-home-about-us-services-and-contact-with-a-consistent-header-navigation-and-footer-across-all-pages",
+      "title": "Implement routing and pages: Home, About Us, Services, and Contact, with a consistent header/navigation and footer across all pages.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-the-home-page-hero-section-with-the-exact-headline-complete-digital-online-services-under-one-roof-subheading-fast-trusted-affordable-services-two-cta-buttons-contact-now-and-view-services-and-a-professional-illustration-area-aligned-with-a-computer-digital-services-theme",
+      "title": "Build the Home page hero section with the exact headline “Complete Digital & Online Services Under One Roof”, subheading “Fast, Trusted & Affordable Services”, two CTA buttons (“Contact Now” and “View Services”), and a professional illustration area aligned with a computer/digital services theme.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-services-section-and-a-detailed-services-page-that-presents-categorized-service-blocks-with-the-following-categories-and-items-government-online-services-new-government-schemes-apply-job-vacancy-form-filling-scholarship-apply-caste-certificate-income-certificate-voter-id-card-pan-card-e-shram-card-all-online-form-filling-services-graphic-design-services-logo-design-resume-cv-design-visiting-card-design-banner-poster-design-invitation-card-design-social-media-post-design-passport-size-photo-editing-school-college-support-school-project-files-college-assignments-practical-files-ppt-presentation-cover-page-design-typing-formatting-work",
+      "title": "Create a Services section (and a detailed Services page) that presents categorized service blocks with the following categories and items: Government & Online Services (New Government Schemes Apply, Job Vacancy Form Filling, Scholarship Apply, Caste Certificate, Income Certificate, Voter ID Card, PAN Card, E-Shram Card, All Online Form Filling Services); Graphic Design Services (Logo Design, Resume / CV Design, Visiting Card Design, Banner & Poster Design, Invitation Card Design, Social Media Post Design, Passport Size Photo Editing); School & College Support (School Project Files, College Assignments, Practical Files, PPT Presentation, Cover Page Design, Typing & Formatting Work).",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-why-choose-us-section-with-the-following-points-fast-trusted-service-affordable-charges-proper-guidance-customer-satisfaction-priority",
+      "title": "Add a “Why Choose Us” section with the following points: Fast & Trusted Service; Affordable Charges; Proper Guidance; Customer Satisfaction Priority.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-contact-features-display-business-name-nath-cyber-cafe-phone-numbers-9435212145-91260-26463-add-a-whatsapp-chat-button-include-a-contact-form-with-fields-name-phone-message-and-show-a-google-map-embed-area-using-a-location-placeholder",
+      "title": "Implement contact features: display business name “Nath Cyber Cafe”, phone numbers “9435212145 / 91260 26463”, add a WhatsApp chat button, include a contact form with fields (Name, Phone, Message), and show a Google Map embed area using a location placeholder.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-social-media-integration-by-rendering-a-set-of-social-icons-links-in-the-footer-and-or-contact-area-with-configurable-urls-placeholders-by-default-for-common-platforms",
+      "title": "Add social media integration by rendering a set of social icons/links in the footer (and/or contact area) with configurable URLs (placeholders by default) for common platforms.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-seo-friendly-structure-across-pages-semantic-headings-per-page-document-titles-and-meta-descriptions-open-graph-twitter-preview-tags-and-basic-localbusiness-structured-data-json-ld-for-nath-cyber-cafe-using-the-provided-phone-numbers",
+      "title": "Implement SEO-friendly structure across pages: semantic headings, per-page document titles and meta descriptions, Open Graph/Twitter preview tags, and basic LocalBusiness structured data (JSON-LD) for “Nath Cyber Cafe” using the provided phone numbers.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-fast-loading-and-a-secure-professional-layout-by-optimizing-assets-compressed-images-avoiding-unnecessary-heavy-libraries-and-providing-a-polished-ui-with-accessible-color-contrast-and-focus-states",
+      "title": "Ensure fast loading and a secure, professional layout by optimizing assets (compressed images), avoiding unnecessary heavy libraries, and providing a polished UI with accessible color contrast and focus states.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Create responsive website UI with clean minimalist royal blue/cyan/white theme and modern sans-serif typography",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Build Home page with hero (headline, subheading, CTA buttons) and professional digital-service illustration area",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Add Services section with categorized service blocks (Government & Online, Graphic Design, School & College Support) and listed items",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Add 'Why Choose Us' section with key trust/benefit points",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Add Contact section with business name, phone numbers, WhatsApp button, contact form, and Google Map placeholder integration",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Create additional pages: About Us (short professional description), Services (detailed listing), Contact page",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Implement technical requirements: SEO-optimized structure, fast loading performance, social media integration, WhatsApp chat button, secure/professional layout",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Nath Cyber Cafe",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}
