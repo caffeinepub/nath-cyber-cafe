@@ -11,7 +11,7 @@ export default function ContactPage() {
     <>
       <Seo
         title="Contact Us"
-        description={`Get in touch with Nath Cyber Cafe. Call us at ${cafeInfo.phone} or email us at ${cafeInfo.email}.`}
+        description={`Get in touch with Nath Cyber Cafe for graphic design and academic services. Call us at ${cafeInfo.phone} or WhatsApp at ${cafeInfo.whatsapp}.`}
         path="/contact"
       />
       
@@ -30,7 +30,7 @@ export default function ContactPage() {
             {/* Contact Information */}
             <div className="space-y-8">
               <div className="bg-card border rounded-xl p-8 shadow-sm">
-                <h2 className="text-2xl font-bold mb-6">{cafeInfo.name}</h2>
+                <h2 className="text-2xl font-bold mb-6">Nath Cyber Cafe</h2>
                 
                 <div className="space-y-6">
                   <div className="flex items-start gap-4">
@@ -39,7 +39,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h3 className="font-semibold mb-1">Phone Numbers</h3>
-                      <p className="text-muted-foreground">{cafeInfo.phone}</p>
+                      <p className="text-muted-foreground">9435212145 / 9126026463</p>
                     </div>
                   </div>
 

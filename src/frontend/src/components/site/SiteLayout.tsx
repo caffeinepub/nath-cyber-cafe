@@ -1,6 +1,7 @@
 import { Outlet } from '@tanstack/react-router';
 import SiteHeader from './SiteHeader';
 import SiteFooter from './SiteFooter';
+import FloatingWhatsAppButton from './FloatingWhatsAppButton';
 
 export default function SiteLayout() {
   return (
@@ -10,6 +11,7 @@ export default function SiteLayout() {
         <Outlet />
       </main>
       <SiteFooter />
+      <FloatingWhatsAppButton />
     </div>
   );
 }

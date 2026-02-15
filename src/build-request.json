@@ -1,217 +1,232 @@
 {
   "kind": "build_request",
-  "title": "Convert Jobs page to “Latest Government Jobs” with official apply links, filters, and royal-blue government styling",
+  "title": "Rebrand Nath Cyber Cafe site for Graphic Design, School Projects, and College Assignments + add Gallery, Testimonials, and WhatsApp ordering",
   "priority": "normal",
   "requirements": [
     {
       "id": "REQ-1",
-      "text": "Update the existing /jobs route page to be a “Latest Government Jobs” page for Nath Cyber Cafe, with user-facing copy focused on Indian government job vacancies (not general/remote jobs).",
+      "text": "Update the Home page hero section to match the new business focus and exact hero copy: Headline “Professional Graphic Design & Academic Project Solutions”; Subheading “Creative Designs & Neat Academic Work at Affordable Prices”; primary CTA “View Services” (links to /services); secondary CTA “Contact Now” that opens WhatsApp chat using the configured WhatsApp number.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-1"
+          "msg-6"
         ],
         "quotes": [
-          "Create a professional and responsive “Latest Government Jobs” page for a website named Nath Cyber Cafe. The page should display updated Indian government job vacancies with official apply links."
+          "Headline: “Professional Graphic Design & Academic Project Solutions”\nSubheading:\nCreative Designs & Neat Academic Work at Affordable Prices\nButtons:\nView Services\nContact Now (WhatsApp integration)"
         ]
       },
       "acceptanceCriteria": [
-        "Visiting /jobs shows page title/hero text referencing “Latest Government Jobs” and “Nath Cyber Cafe”.",
-        "The old Remotive/remote-jobs wording is removed from the Jobs page SEO description and visible UI copy."
+        "Home page hero headline and subheading match the user-provided text exactly (including punctuation/case).",
+        "“View Services” navigates to #/services.",
+        "“Contact Now” opens https://wa.me/91<configured_number> in a new tab with rel=\"noopener noreferrer\"."
       ]
     },
     {
       "id": "REQ-2",
-      "text": "Implement a government-jobs data source and replace the current Remotive jobs integration so the Jobs page fetches and displays Indian government job vacancies from trusted sources (RSS feeds or public APIs where available), normalized into a single job list.",
-      "target": "both",
+      "text": "Replace the current Services content model and UI to support service cards with: icon, service name, short description, optional starting price placeholder, and an “Order Now” button that opens WhatsApp with a prefilled message containing the selected service name. Implement this for three service sections: (1) Graphic Design Services with the 8 requested items; (2) School Project Services with the 6 requested items and the provided section description; (3) College Assignment Services with the 6 requested items and the provided section description.",
+      "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-1"
+          "msg-6"
         ],
         "quotes": [
-          "Fetch latest government jobs from trusted official sources (RSS feeds or public APIs if available)."
+          "🎨 Graphic Design Services Section\nCreate a visually appealing card layout including:\nLogo Design\nResume / CV Design\nVisiting Card Design\nBanner & Poster Design\nInvitation Card Design\nSocial Media Post Design\nPassport Size Photo Editing\nFlex & Print Design\nEach service should have:\nShort description\nStarting price (optional placeholder)\n“Order Now” button\n\n📚 School Project Services Section\nInclude:\nAll Class School Project Files\nSubject-wise Project Work\nPractical File Preparation\nChart & Model Guidance\nDecorative Cover Page Design\nPrinted & Handwritten Project Options\nAdd a short description:\n“Neat, well-structured and teacher-approved project files.”\n\n🎓 College Assignment Services Section\nInclude:\nCollege Assignments (All Streams)\nPractical Files\nPPT Presentation Design\nResearch Formatting\nTyping & Formatting Work\nCover Page & Spiral Binding Support\nAdd a professional description:\n“Proper formatting, plagiarism-free structured assignments.”"
         ]
       },
       "acceptanceCriteria": [
-        "The Jobs page no longer calls the Remotive API for its primary job list.",
-        "The app fetches government job items from at least one feed/API source and renders them in the UI.",
-        "The fetched job items are normalized into a consistent model used by the UI, even if some fields are missing from the source (missing fields render as “—” rather than breaking the UI).",
-        "Data fetching uses caching/refresh behavior so repeated visits do not refetch excessively (e.g., React Query staleTime or backend caching)."
+        "Services page renders exactly three sections: Graphic Design Services, School Project Services, and College Assignment Services.",
+        "Each service item displays: an icon, the service name, a short description, a visible starting price placeholder (e.g., “Starting from ₹___”), and an “Order Now” button.",
+        "Clicking “Order Now” opens WhatsApp chat (wa.me) with a prefilled text that includes the selected service name.",
+        "The School Project Services section displays the description “Neat, well-structured and teacher-approved project files.”",
+        "The College Assignment Services section displays the description “Proper formatting, plagiarism-free structured assignments.”"
       ]
     },
     {
       "id": "REQ-3",
-      "text": "Ensure each job card displays the required government-job fields and provides a prominent “Apply Now” button that opens the official notification/application link in a new tab with secure external linking.",
+      "text": "Update the Home page to include: (a) a Services section that highlights the three main service areas (Graphic Design, School Projects, College Assignments) with attractive icon cards and a link to the full Services page; (b) a new Gallery section that shows a responsive grid of previous-work images (static assets) with a simple “view larger” interaction; (c) a new Testimonials section displaying at least 3 testimonials (static content) in a professional card layout.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-1"
+          "msg-6"
         ],
         "quotes": [
-          "Display for each job: Job Title, Organization Name, Total Vacancies, Qualification, Last Date, Location, Official Apply Link",
-          "Bold “Apply Now” button",
-          "Secure external linking (target=\"_blank\")"
+          "Gallery section to showcase previous work\nTestimonials section"
         ]
       },
       "acceptanceCriteria": [
-        "Each rendered job includes: Job Title, Organization Name, Total Vacancies, Qualification, Last Date, Location, and an Apply Now link.",
-        "“Apply Now” opens in a new tab and uses rel=\"noopener noreferrer\".",
-        "If a field is unknown/unavailable from the source, the UI shows a placeholder (e.g., “—”) and continues rendering cleanly."
+        "Home page contains a Gallery section with a grid of images that adapts from mobile to desktop.",
+        "Gallery images are loaded from frontend/public/assets/generated (no backend fetching).",
+        "Home page contains a Testimonials section with at least 3 entries (name + short testimonial text).",
+        "All new sections are responsive and match the site theme."
       ]
     },
     {
       "id": "REQ-4",
-      "text": "Add search and filtering specifically for government jobs: search must filter by job title OR qualification text; category filter options must include exactly: SSC, Railway, Banking, UPSC, State PSC; and the page must support the broader job types requested (Central Government Jobs, State Government Jobs, Railway Jobs, SSC Jobs, Banking Jobs, Defence Jobs, Teaching Jobs) via categories/tags.",
+      "text": "Add a persistent floating WhatsApp button visible across the entire site (all routes), fixed to the bottom-right corner, linking to WhatsApp chat using the configured WhatsApp number.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-1"
+          "msg-6"
         ],
         "quotes": [
-          "Add search bar (filter by job title or qualification).",
-          "Add category filter: SSC, Railway, Banking, UPSC, State PSC",
-          "The page should show: Central Government Jobs, State Government Jobs, Railway Jobs, SSC Jobs, Banking Jobs, Defence Jobs, Teaching Jobs"
+          "WhatsApp floating button"
         ]
       },
       "acceptanceCriteria": [
-        "Typing in the search bar filters the visible job list by matching against title and qualification fields.",
-        "Category dropdown includes SSC, Railway, Banking, UPSC, State PSC (plus an “All” option).",
-        "Jobs are tagged/categorized so the user can browse the requested government job groupings (Central/State/Railway/SSC/Banking/Defence/Teaching) via visible labels and/or the category system."
+        "A floating WhatsApp button is visible on Home, Services, About (if present), and Contact pages.",
+        "Button uses the configured WhatsApp number and opens wa.me in a new tab with rel=\"noopener noreferrer\".",
+        "Button does not obstruct primary page actions on mobile (reasonable spacing from edges)."
       ]
     },
     {
       "id": "REQ-5",
-      "text": "Keep “Load More” pagination, add a visible “Last Updated” timestamp for the job data, and provide user-friendly error handling if the feed/API fails.",
+      "text": "Update site navigation and footer “Quick Links” to match the new site focus by removing the Government Jobs link from the header and footer navigation (the site should prioritize Home, About, Services, Contact).",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-1"
+          "msg-6"
         ],
         "quotes": [
-          "Add “Load More” button.",
-          "Show “Last Updated” date.",
-          "If API fails, show user-friendly message."
+          "Create a modern, professional and responsive website ... focusing mainly on Graphic Design Services, School Projects, and College Assignments."
         ]
       },
       "acceptanceCriteria": [
-        "A “Load More” control incrementally reveals additional jobs without reloading the page.",
-        "The Jobs page displays a “Last Updated” date/time derived from the latest successful fetch (backend response timestamp or client fetch time).",
-        "If data fetching fails, the page shows a clear, non-technical error message and a retry action."
+        "Header navigation no longer shows a “Jobs” link.",
+        "Footer Quick Links no longer shows “Government Jobs” (or “Jobs”).",
+        "All remaining nav links work and route correctly."
       ]
     },
     {
       "id": "REQ-6",
-      "text": "Enforce “official sources only” for apply links by validating/whitelisting official government organization domains before rendering/enabling “Apply Now”, including references such as UPSC, SSC, Railway Recruitment Board, IBPS, and SBI; block or clearly label any non-official links.",
-      "target": "both",
+      "text": "Update SEO metadata and structured data defaults to reflect the new service focus (graphic design + school projects + college assignments) instead of government jobs/general online services. Ensure each main page (Home, Services, Contact) has an appropriate title and description aligned with the new content.",
+      "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-1"
+          "msg-6"
         ],
         "quotes": [
-          "Use official websites for job links such as: Union Public Service Commission, Staff Selection Commission, Railway Recruitment Board, Institute of Banking Personnel Selection, State Bank of India",
-          "Only redirect users to official websites for applying."
+          "SEO optimized structure"
         ]
       },
       "acceptanceCriteria": [
-        "The system validates job apply URLs against an explicit allowlist of official domains (maintained in code/config).",
-        "If a job item’s apply URL is not on the allowlist, the UI does not present it as a valid “Apply Now” link (e.g., disables the button or shows “Official link unavailable”).",
-        "Allowed official links open in a new tab with rel=\"noopener noreferrer\"."
+        "Default SEO description mentions graphic design, school projects, and college assignments (not government jobs).",
+        "Home/Services/Contact pages render distinct, relevant titles and descriptions.",
+        "LocalBusiness JSON-LD remains present and valid JSON."
       ]
     },
     {
       "id": "REQ-7",
-      "text": "Update the Jobs page UI to a professional, trustworthy, government-style layout using a royal blue + white theme, with a header area that includes a government-style icon/emblem and card-based listings with a bold “Apply Now” button.",
-      "target": "frontend",
+      "text": "Ensure contact details match the user request on the Contact section/page: business name “Nath Cyber Cafe”, phone number “9435212145 / 9126026463”, and WhatsApp integration. Keep the contact form fields as Name, Phone, Message, and keep the Google Map location placeholder section.",
+      "target": "both",
       "source": {
         "messageIds": [
-          "msg-1"
+          "msg-6"
         ],
         "quotes": [
-          "Royal blue + white color theme",
-          "Government-style clean layout",
-          "Card-based job listing",
-          "Government job icon or emblem in header"
+          "📞 Contact Section\nBusiness Name: Nath Cyber Cafe\nPhone Number: 9435212145 / 9126026463\nWhatsApp Button\nContact Form (Name, Phone, Message)\nGoogle Map Location Placeholder"
         ]
       },
       "acceptanceCriteria": [
-        "The Jobs page visually uses royal blue and white as the primary theme colors (buttons, accents, header elements).",
-        "The page remains fully responsive on mobile/tablet/desktop.",
-        "A government-style emblem/icon appears in the Jobs page header area.",
-        "Job listings are presented as cards with a prominent, high-contrast “Apply Now” button."
+        "Frontend contact page shows the business name and the phone string exactly as provided.",
+        "WhatsApp links use the configured WhatsApp number consistently across frontend config and backend cafe info response.",
+        "Contact form has fields: Name, Phone, Message and can submit successfully to the existing backend contact submission method.",
+        "Map placeholder/iframe section remains present on the Contact page."
       ]
     },
     {
       "id": "REQ-8",
-      "text": "Add the requested footer content for this government jobs experience: show Nath Cyber Cafe contact details (including phone 9435212145), a WhatsApp chat button, and the disclaimer text exactly: “This website only provides information and official links. We are not a government organization.”",
+      "text": "Maintain a clean, minimalist, professional royal blue + cyan + white visual theme across all updated/new sections, using modern sans-serif typography and consistent spacing, ensuring the full site remains mobile-first responsive and fast-loading (avoid heavy assets/scripts).",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-1"
+          "msg-6"
         ],
         "quotes": [
-          "Add contact details: Nath Cyber Cafe Phone: 9435212145 WhatsApp Chat Button",
-          "Add disclaimer: “This website only provides information and official links. We are not a government organization.”"
+          "Clean, minimalist and professional layout\nRoyal blue, cyan and white color theme\nModern sans-serif fonts\nMobile-friendly responsive design\nFast loading\nSmooth scrolling and modern UI"
         ]
       },
       "acceptanceCriteria": [
-        "The Jobs page (or site footer visible on the Jobs page) clearly displays Nath Cyber Cafe contact details and a working WhatsApp chat link/button.",
-        "The disclaimer text is present verbatim and visible on the Jobs page.",
-        "All user-facing text is in English."
+        "New/updated sections visually match the existing Tailwind theme variables and use a consistent typography scale.",
+        "Pages remain responsive at common breakpoints (mobile, tablet, desktop).",
+        "No new heavy libraries are introduced for gallery/testimonials; gallery behavior is implemented with lightweight UI logic.",
+        "Smooth scrolling remains enabled (no regression)."
       ]
     },
     {
       "id": "REQ-9",
-      "text": "Add/adjust SEO metadata for the government jobs page to reflect “Latest Government Jobs” and ensure fast-loading behavior (avoid heavy client processing), keeping code clean and well-commented around data mapping, filtering, and pagination.",
+      "text": "Add social media links area (icons/links) in the footer and ensure they are present and styled consistently. Keep WhatsApp as a working link; leave other social links as placeholders if no real URLs are provided.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-1"
+          "msg-6"
         ],
         "quotes": [
-          "SEO optimized",
-          "Fast loading",
-          "Clean and commented code"
+          "Social media links"
         ]
       },
       "acceptanceCriteria": [
-        "/jobs SEO title and description mention government jobs and Nath Cyber Cafe.",
-        "Filtering and pagination remain performant with typical feed sizes (no noticeable UI lag when searching/filtering).",
-        "Key parsing/mapping/filtering logic is documented with concise comments."
+        "Footer renders social icons/links including WhatsApp and YouTube (existing), and placeholder links remain safe (#) without breaking navigation.",
+        "WhatsApp social link opens the configured wa.me URL."
       ]
     },
     {
       "id": "REQ-10",
-      "text": "Add the generated government-style emblem image as a static asset under frontend/public/assets/generated and use it in the Jobs page header area.",
-      "target": "frontend",
+      "text": "Update backend cafe info response to return a WhatsApp number consistent with the frontend configuration (use 9126026463) so any frontend usage of backend cafe info cannot display a mismatched WhatsApp number.",
+      "target": "backend",
       "source": {
         "messageIds": [
-          "msg-1"
+          "msg-6"
         ],
         "quotes": [
-          "Government job icon or emblem in header"
+          "WhatsApp integration"
         ]
       },
       "acceptanceCriteria": [
-        "The emblem image exists in frontend/public/assets/generated with the filename specified in imageRequirements.required.",
-        "The Jobs page header renders the emblem with appropriate alt text and responsive sizing."
+        "backend/main.mo getCafeInfo().whatsapp returns \"9126026463\".",
+        "Frontend WhatsApp buttons/links use 9126026463 consistently."
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "text": "Render any newly generated images as static assets under frontend/public/assets/generated and use them in the Gallery section (and any updated branding/hero illustration if applicable).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-6"
+        ],
+        "quotes": [
+          "Gallery section to showcase previous work"
+        ]
+      },
+      "acceptanceCriteria": [
+        "New images exist under frontend/public/assets/generated and are referenced by <img> tags in the Gallery section.",
+        "No backend endpoints are used to serve images."
       ]
     }
   ],
   "constraints": [
-    "Do not edit any files under frontend/src/components/ui (read-only UI components must be composed, not modified).",
-    "Do not edit the immutable auth/actor bootstrap hooks: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx.",
-    "Backend must remain a single Motoko actor (all logic in backend/main.mo); add backend/migration.mo only if state schema changes require it."
+    "Do not edit files under frontend/src/components/ui (read-only).",
+    "Do not modify frontend immutable paths: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx.",
+    "Backend must remain a single Motoko actor in backend/main.mo; add backend/migration.mo only if state schema changes (not expected for this request)."
   ],
   "nonGoals": [
-    "Do not implement the optional advanced features in this request: email notification subscription, daily auto-update system, admin dashboard to manually add jobs, PDF notification download button.",
-    "Do not add third-party authentication providers (only Internet Identity is supported).",
-    "Do not add real-time features (WebSockets/chat/push notifications)."
+    "Do not implement third-party authentication beyond Internet Identity.",
+    "Do not add external databases or non-IC backend services.",
+    "Do not implement real-time chat or WebSocket features.",
+    "Do not build an admin dashboard/CMS for gallery/testimonials (use static content/assets for now)."
   ],
   "imageRequirements": {
     "required": [
-      "Government-style circular emblem icon with Ashoka-inspired silhouette and laurel wreath, flat vector look, royal blue on white (gov-emblem.dim_256x256.png)"
+      "Minimal modern logomark for a digital service business, royal blue and cyan on white background (nath-logo-mark.dim_512x512.png)",
+      "Wide gallery image showing a clean logo/branding mockup on stationery (gallery-01.dim_1200x900.png)",
+      "Wide gallery image showing a modern poster/banner design mockup (gallery-02.dim_1200x900.png)",
+      "Wide gallery image showing an academic project/assignment cover page design mockup (gallery-03.dim_1200x900.png)"
     ],
-    "edits": []
+    "edits": [
+      "Update the illustration to depict graphic design and academic work in a clean minimalist style, matching royal blue/cyan/white palette (hero-illustration.dim_1200x800.png > hero-illustration-v2.dim_1200x800.png)",
+      "Refine the existing logo to match the new minimalist royal blue/cyan identity (logo.dim_512x512.png > logo-v2.dim_512x512.png)",
+      "Refine the header logo to match the updated branding (header-logo.dim_512x512.png > header-logo-v2.dim_512x512.png)"
+    ]
   },
   "userProfileUpdate": {
     "goalsToAdd": [],

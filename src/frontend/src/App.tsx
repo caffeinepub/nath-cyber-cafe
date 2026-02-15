@@ -4,7 +4,6 @@ import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import ServicesPage from './pages/ServicesPage';
 import ContactPage from './pages/ContactPage';
-import JobsPage from './pages/JobsPage';
 
 const rootRoute = createRootRoute({
   component: SiteLayout,
@@ -34,13 +33,7 @@ const contactRoute = createRoute({
   component: ContactPage,
 });
 
-const jobsRoute = createRoute({
-  getParentRoute: () => rootRoute,
-  path: '/jobs',
-  component: JobsPage,
-});
-
-const routeTree = rootRoute.addChildren([indexRoute, aboutRoute, servicesRoute, contactRoute, jobsRoute]);
+const routeTree = rootRoute.addChildren([indexRoute, aboutRoute, servicesRoute, contactRoute]);
 
 const hashHistory = createHashHistory();
 

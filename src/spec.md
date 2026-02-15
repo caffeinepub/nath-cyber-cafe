@@ -1,16 +1,18 @@
 # Specification
 
 ## Summary
-**Goal:** Convert the existing `/jobs` route into a “Latest Government Jobs” page for Nath Cyber Cafe that lists Indian government job vacancies with official apply links, filtering, and a royal-blue government-style design.
+**Goal:** Rebrand the Nath Cyber Cafe site to focus on graphic design and academic project/assignment services, adding gallery/testimonials and consistent WhatsApp-based ordering/contact.
 
 **Planned changes:**
-- Update `/jobs` page copy and hero/SEO metadata to “Latest Government Jobs” + “Nath Cyber Cafe”, removing all Remotive/remote-jobs wording.
-- Replace the Remotive jobs integration with a government-jobs data source (RSS feeds and/or public APIs), normalize results into a single job model, and add caching/refresh behavior.
-- Render job cards showing: Job Title, Organization Name, Total Vacancies, Qualification, Last Date, Location, and a prominent “Apply Now” button (new tab + `rel="noopener noreferrer"`), with missing fields displayed as “—”.
-- Add government-job search (matches title or qualification), category filter dropdown (All, SSC, Railway, Banking, UPSC, State PSC), and visible labels/tags to support browsing: Central, State, Railway, SSC, Banking, Defence, Teaching.
-- Keep “Load More” pagination, display a “Last Updated” timestamp, and add user-friendly error messaging with a retry action.
-- Validate/whitelist official apply-link domains (e.g., UPSC/SSC/RRB/IBPS/SBI); disable or label non-official links as unavailable.
-- Restyle the page with a responsive royal blue + white theme, including a government-style emblem/icon in the header area.
-- Add footer content on/visible from the Jobs page: Nath Cyber Cafe contact details (Phone: 9435212145), a WhatsApp chat button/link, and the disclaimer text exactly: “This website only provides information and official links. We are not a government organization.”
+- Update the Home hero copy and CTAs: “View Services” links to /services and “Contact Now” opens WhatsApp chat using the configured number.
+- Revamp the Services page into three sections (Graphic Design, School Project, College Assignment) using service cards (icon, name, short description, starting price placeholder, and “Order Now” WhatsApp link with prefilled service name).
+- Add to the Home page: a highlighted Services overview section (3 main areas), a responsive Gallery grid with “view larger” interaction using static images, and a Testimonials section with at least 3 static testimonials.
+- Add a persistent floating WhatsApp button on all routes that opens WhatsApp chat with the configured number.
+- Update header navigation and footer quick links to remove Government Jobs/Jobs and prioritize Home, About, Services, Contact.
+- Update SEO metadata and structured data defaults to reflect graphic design + school projects + college assignments, with distinct titles/descriptions for Home, Services, Contact.
+- Ensure Contact details match: business name “Nath Cyber Cafe”, phone “9435212145 / 9126026463”, WhatsApp integration, contact form fields (Name, Phone, Message), and keep the map placeholder section.
+- Keep the visual theme clean and minimalist with royal blue + cyan + white styling, mobile-first responsiveness, and lightweight UI (no heavy libraries for gallery/testimonials).
+- Add footer social links area with icons/links, keeping WhatsApp working and other links as safe placeholders if not provided.
+- Update backend cafe info to return WhatsApp number “9126026463” consistently with frontend configuration.
 
-**User-visible outcome:** Visiting `/jobs` shows a fast, responsive “Latest Government Jobs” experience for Nath Cyber Cafe where users can search/filter Indian government vacancies, see key job details, and click verified official “Apply Now” links, with clear last-updated info and helpful error handling.
+**User-visible outcome:** The site presents updated branding and messaging for design and academic services, users can browse services and place orders via WhatsApp, view a gallery and testimonials on the Home page, and contact the business with consistent WhatsApp access across the site.

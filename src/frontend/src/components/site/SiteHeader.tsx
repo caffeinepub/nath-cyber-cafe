@@ -13,7 +13,6 @@ export default function SiteHeader() {
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
     { name: 'Services', path: '/services' },
-    { name: 'Jobs', path: '/jobs' },
     { name: 'Contact', path: '/contact' },
   ];
 
@@ -30,7 +29,7 @@ export default function SiteHeader() {
         <div className="flex h-16 items-center justify-between">
           <Link to="/" className="flex items-center space-x-3">
             <img
-              src="/assets/generated/header-logo.dim_512x512.png"
+              src="/assets/generated/header-logo-v2.dim_512x512.png"
               alt="Nath Cyber Cafe"
               className="h-10 w-10"
             />

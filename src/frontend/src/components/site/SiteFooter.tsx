@@ -18,14 +18,14 @@ export default function SiteFooter() {
           <div>
             <div className="flex items-center space-x-3 mb-4">
               <img
-                src="/assets/generated/logo.dim_512x512.png"
+                src="/assets/generated/logo-v2.dim_512x512.png"
                 alt="Nath Cyber Cafe"
                 className="h-10 w-10"
               />
               <span className="text-lg font-bold text-primary">{cafeInfo.name}</span>
             </div>
             <p className="text-sm text-muted-foreground">
-              Complete Digital & Online Services Under One Roof. Fast, Trusted & Affordable Services.
+              Professional Graphic Design & Academic Project Solutions. Creative Designs & Neat Academic Work at Affordable Prices.
             </p>
           </div>
 
@@ -46,11 +46,6 @@ export default function SiteFooter() {
               <li>
                 <a href="#/services" className="text-muted-foreground hover:text-primary transition-colors">
                   Services
-                </a>
-              </li>
-              <li>
-                <a href="#/jobs" className="text-muted-foreground hover:text-primary transition-colors">
-                  Government Jobs
                 </a>
               </li>
               <li>
@@ -124,6 +119,15 @@ export default function SiteFooter() {
                 aria-label="YouTube"
               >
                 <SiYoutube size={20} />
+              </a>
+              <a
+                href={socialLinks.whatsapp}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-[#25D366] transition-colors"
+                aria-label="WhatsApp"
+              >
+                <MessageCircle size={20} />
               </a>
             </div>
           </div>

@@ -1,240 +1,298 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Latest Government Jobs page for Nath Cyber Cafe (official links, filters, royal-blue styling)",
+  "title": "Nath Cyber Cafe rebrand: services, gallery/testimonials, WhatsApp ordering, SEO, and navigation updates",
   "requirements": [
     {
       "id": "REQ-1",
-      "summary": "Refocus the existing /jobs page content and copy to “Latest Government Jobs” for Nath Cyber Cafe (Indian government vacancies only).",
+      "summary": "Update Home hero copy and CTAs to reflect graphic design + academic services, including WhatsApp CTA behavior.",
       "acceptanceCriteria": [
-        "Visiting /jobs shows page title/hero text referencing “Latest Government Jobs” and “Nath Cyber Cafe”.",
-        "The old Remotive/remote-jobs wording is removed from the Jobs page SEO description and visible UI copy."
+        "Home page hero headline and subheading match the user-provided text exactly (including punctuation/case).",
+        "“View Services” navigates to #/services.",
+        "“Contact Now” opens https://wa.me/91<configured_number> in a new tab with rel=\"noopener noreferrer\"."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/pages/JobsPage.tsx",
+          "path": "frontend/src/components/home/HeroSection.tsx",
           "operation": "modify",
-          "description": "Update hero/title/body copy to “Latest Government Jobs” for Nath Cyber Cafe and remove all remote/Remotive wording; ensure user-facing English copy is government-jobs focused."
+          "description": "Replace hero headline/subheading with the exact provided copy, update primary CTA to “View Services” linking to /services, and change secondary CTA to “Contact Now” opening the configured WhatsApp wa.me URL in a new tab with rel=\"noopener noreferrer\". Update hero image reference to frontend/public/assets/generated/hero-illustration-v2.dim_1200x800.png."
         },
         {
-          "path": "frontend/src/hooks/useJobs.ts",
-          "operation": "modify",
-          "description": "Rename query intent away from Remotive in queryKey and comments so the app’s jobs fetching is clearly government-jobs focused (Verify the component's usage instructions before implementing)."
+          "path": "frontend/public/assets/generated/hero-illustration-v2.dim_1200x800.png",
+          "operation": "create",
+          "description": "Add the generated updated hero illustration asset as a static file to be referenced by the Hero section."
         }
       ]
     },
     {
       "id": "REQ-2",
-      "summary": "Replace Remotive integration with a government-jobs data source (RSS/public sources) and normalize items into a consistent UI model with caching.",
+      "summary": "Revamp Services data + UI to show service cards with icon, description, starting price placeholder, and WhatsApp “Order Now” with prefilled message for three required sections.",
       "acceptanceCriteria": [
-        "The Jobs page no longer calls the Remotive API for its primary job list.",
-        "The app fetches government job items from at least one feed/API source and renders them in the UI.",
-        "The fetched job items are normalized into a consistent model used by the UI, even if some fields are missing from the source (missing fields render as “—” rather than breaking the UI).",
-        "Data fetching uses caching/refresh behavior so repeated visits do not refetch excessively (e.g., React Query staleTime or backend caching)."
+        "Services page renders exactly three sections: Graphic Design Services, School Project Services, and College Assignment Services.",
+        "Each service item displays: an icon, the service name, a short description, a visible starting price placeholder (e.g., “Starting from ₹___”), and an “Order Now” button.",
+        "Clicking “Order Now” opens WhatsApp chat (wa.me) with a prefilled text that includes the selected service name.",
+        "The School Project Services section displays the description “Neat, well-structured and teacher-approved project files.”",
+        "The College Assignment Services section displays the description “Proper formatting, plagiarism-free structured assignments.”"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/lib/jobs/govJobsClient.ts",
-          "operation": "create",
-          "description": "Implement a lightweight government-jobs fetcher that loads items from at least one trusted public feed/source (e.g., RSS) and returns a normalized list plus a last-updated timestamp; keep parsing/mapping robust for missing fields and document mapping assumptions with concise comments."
-        },
-        {
-          "path": "frontend/src/lib/jobs/govJobModel.ts",
-          "operation": "create",
-          "description": "Define an app-level GovernmentJob model used by the UI (title, organization, vacancies, qualification, lastDate, location, applyUrl, categories/tags, source); ensure optional fields are explicitly optional so the UI can render placeholders."
-        },
-        {
-          "path": "frontend/src/hooks/useJobs.ts",
+          "path": "frontend/src/content/services.ts",
           "operation": "modify",
-          "description": "Replace Remotive queryFn with govJobsClient fetching; keep React Query caching (staleTime) and retry behavior; return both normalized jobs and lastUpdated data for the Jobs page (Verify the component's usage instructions before implementing)."
+          "description": "Replace the services content model to define exactly three sections (Graphic Design Services, School Project Services, College Assignment Services) and, for each service item, include: icon, name, short description, and a starting price placeholder string (e.g., “Starting from ₹___”). Include all requested items per section and include the two required section descriptions for School Project Services and College Assignment Services."
         },
         {
-          "path": "frontend/src/pages/JobsPage.tsx",
+          "path": "frontend/src/components/services/ServiceCategoryGrid.tsx",
           "operation": "modify",
-          "description": "Wire the updated useJobs hook so /jobs renders the normalized government jobs list and uses returned lastUpdated data; ensure UI does not depend on Remotive fields."
+          "description": "Update the Services page grid to render the new three-section model as card-based UI: each service card shows icon, name, short description, starting price placeholder, and an “Order Now” action that opens the configured WhatsApp wa.me URL with a prefilled message containing the selected service name. Ensure the two section descriptions render exactly as provided."
+        },
+        {
+          "path": "frontend/src/pages/ServicesPage.tsx",
+          "operation": "modify",
+          "description": "Update Services page copy (intro paragraph and SEO description prop) to align with the new focus (graphic design, school projects, college assignments) and remove references to government forms/jobs in the page messaging."
         }
       ]
     },
     {
       "id": "REQ-3",
-      "summary": "Update job cards to display required government-job fields with placeholders and a secure external “Apply Now” action.",
+      "summary": "Expand Home page with a 3-area services highlight section, a static-asset Gallery with view-larger interaction, and a Testimonials section with at least 3 entries.",
       "acceptanceCriteria": [
-        "Each rendered job includes: Job Title, Organization Name, Total Vacancies, Qualification, Last Date, Location, and an Apply Now link.",
-        "“Apply Now” opens in a new tab and uses rel=\"noopener noreferrer\".",
-        "If a field is unknown/unavailable from the source, the UI shows a placeholder (e.g., “—”) and continues rendering cleanly."
+        "Home page contains a Gallery section with a grid of images that adapts from mobile to desktop.",
+        "Gallery images are loaded from frontend/public/assets/generated (no backend fetching).",
+        "Home page contains a Testimonials section with at least 3 entries (name + short testimonial text).",
+        "All new sections are responsive and match the site theme."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/components/jobs/JobCard.tsx",
+          "path": "frontend/src/components/home/ServicesPreviewSection.tsx",
           "operation": "modify",
-          "description": "Refactor job card UI to render the required government-job fields (title, organization, vacancies, qualification, last date, location) with “—” placeholders; keep a prominent “Apply Now” button using target=\"_blank\" and rel=\"noopener noreferrer\" (Verify the component's usage instructions before implementing)."
+          "description": "Replace the current services preview layout with an icon-card highlight for exactly the three main service areas (Graphic Design, School Projects, College Assignments) and provide a clear link/button to the full /services page."
         },
         {
-          "path": "frontend/src/components/jobs/JobCardSkeleton.tsx",
+          "path": "frontend/src/components/home/GallerySection.tsx",
+          "operation": "create",
+          "description": "Create a responsive Gallery section that renders a grid of static <img> assets from frontend/public/assets/generated (gallery-01.dim_1200x900.png, gallery-02.dim_1200x900.png, gallery-03.dim_1200x900.png) and supports a lightweight “view larger” interaction. Use the shadcn-ui Dialog component (from the existing read-only ui library) to implement the view-larger modal; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/home/TestimonialsSection.tsx",
+          "operation": "create",
+          "description": "Create a Testimonials section with a professional responsive card layout containing at least 3 static testimonials (name + short text), styled to match the royal blue/cyan/white theme."
+        },
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
           "operation": "modify",
-          "description": "Adjust skeleton layout to roughly match the updated government-job card field layout so loading state remains visually consistent (Verify the component's usage instructions before implementing)."
+          "description": "Wire the updated ServicesPreviewSection plus the new GallerySection and TestimonialsSection into the Home page layout, ensuring mobile-first responsiveness and consistent spacing/typography."
+        },
+        {
+          "path": "frontend/public/assets/generated/gallery-01.dim_1200x900.png",
+          "operation": "create",
+          "description": "Add generated gallery image asset #1 as a static file for use in the Home Gallery section."
+        },
+        {
+          "path": "frontend/public/assets/generated/gallery-02.dim_1200x900.png",
+          "operation": "create",
+          "description": "Add generated gallery image asset #2 as a static file for use in the Home Gallery section."
+        },
+        {
+          "path": "frontend/public/assets/generated/gallery-03.dim_1200x900.png",
+          "operation": "create",
+          "description": "Add generated gallery image asset #3 as a static file for use in the Home Gallery section."
         }
       ]
     },
     {
       "id": "REQ-4",
-      "summary": "Add government-jobs search (title OR qualification) and category filtering with exact options, plus visible tags/groupings for requested job types.",
+      "summary": "Add a persistent floating WhatsApp button across all routes, fixed bottom-right, using the configured WhatsApp number.",
       "acceptanceCriteria": [
-        "Typing in the search bar filters the visible job list by matching against title and qualification fields.",
-        "Category dropdown includes SSC, Railway, Banking, UPSC, State PSC (plus an “All” option).",
-        "Jobs are tagged/categorized so the user can browse the requested government job groupings (Central/State/Railway/SSC/Banking/Defence/Teaching) via visible labels and/or the category system."
+        "A floating WhatsApp button is visible on Home, Services, About (if present), and Contact pages.",
+        "Button uses the configured WhatsApp number and opens wa.me in a new tab with rel=\"noopener noreferrer\".",
+        "Button does not obstruct primary page actions on mobile (reasonable spacing from edges)."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/lib/jobs/jobFiltering.ts",
-          "operation": "modify",
-          "description": "Update filtering utilities to operate on the new GovernmentJob model; implement keyword search that matches against job title OR qualification text; implement category filtering that supports the fixed category set and job tags/groupings; add concise comments explaining filter order and performance considerations."
+          "path": "frontend/src/components/site/FloatingWhatsAppButton.tsx",
+          "operation": "create",
+          "description": "Create a persistent floating WhatsApp action button (fixed bottom-right) that links to the configured wa.me URL in a new tab with rel=\"noopener noreferrer\", with mobile-safe spacing and accessible label."
         },
         {
-          "path": "frontend/src/pages/JobsPage.tsx",
+          "path": "frontend/src/components/site/SiteLayout.tsx",
           "operation": "modify",
-          "description": "Update the search placeholder and wiring so search filters by title/qualification; replace dynamic category extraction with the fixed dropdown options: All, SSC, Railway, Banking, UPSC, State PSC; display visible labels/badges for broader groupings (Central/State/Railway/SSC/Banking/Defence/Teaching) per job in the listing UI."
-        },
-        {
-          "path": "frontend/src/components/jobs/JobCard.tsx",
-          "operation": "modify",
-          "description": "Render job category and broader grouping tags as visible badges/labels on each card (e.g., Central/State/Defence/Teaching) while keeping the official apply action prominent (Verify the component's usage instructions before implementing)."
+          "description": "Render the new FloatingWhatsAppButton within the global layout so it appears on all routes (Home, Services, About, Contact, and any other existing routes)."
         }
       ]
     },
     {
       "id": "REQ-5",
-      "summary": "Keep Load More pagination, show a “Last Updated” timestamp, and provide user-friendly error handling with retry.",
+      "summary": "Update header navigation and footer quick links to remove Government Jobs/Jobs, prioritizing Home, About, Services, Contact.",
       "acceptanceCriteria": [
-        "A “Load More” control incrementally reveals additional jobs without reloading the page.",
-        "The Jobs page displays a “Last Updated” date/time derived from the latest successful fetch (backend response timestamp or client fetch time).",
-        "If data fetching fails, the page shows a clear, non-technical error message and a retry action."
+        "Header navigation no longer shows a “Jobs” link.",
+        "Footer Quick Links no longer shows “Government Jobs” (or “Jobs”).",
+        "All remaining nav links work and route correctly."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/hooks/useJobs.ts",
+          "path": "frontend/src/components/site/SiteHeader.tsx",
           "operation": "modify",
-          "description": "Expose lastUpdated from the latest successful fetch (e.g., from React Query data) so the Jobs page can display it; ensure caching remains enabled to avoid excessive refetching on repeated visits."
+          "description": "Remove the Jobs link from the header navigation (desktop and mobile menus), leaving Home, About, Services, Contact as the primary routes."
         },
         {
-          "path": "frontend/src/pages/JobsPage.tsx",
+          "path": "frontend/src/components/site/SiteFooter.tsx",
           "operation": "modify",
-          "description": "Keep existing Load More behavior; add a visible “Last Updated” line near the results header using the hook’s lastUpdated; keep/adjust error state copy to be non-technical and include a retry action using refetch (Verify the component's usage instructions before implementing)."
+          "description": "Remove the Government Jobs/Jobs entry from the footer Quick Links and ensure remaining links (Home, About, Services, Contact) route correctly."
         }
       ]
     },
     {
       "id": "REQ-6",
-      "summary": "Enforce official-source-only apply links via an allowlist of official domains; disable/label non-official apply actions.",
+      "summary": "Refresh SEO defaults and per-page metadata (Home/Services/Contact) to match the new business focus, keeping valid LocalBusiness JSON-LD.",
       "acceptanceCriteria": [
-        "The system validates job apply URLs against an explicit allowlist of official domains (maintained in code/config).",
-        "If a job item’s apply URL is not on the allowlist, the UI does not present it as a valid “Apply Now” link (e.g., disables the button or shows “Official link unavailable”).",
-        "Allowed official links open in a new tab with rel=\"noopener noreferrer\"."
+        "Default SEO description mentions graphic design, school projects, and college assignments (not government jobs).",
+        "Home/Services/Contact pages render distinct, relevant titles and descriptions.",
+        "LocalBusiness JSON-LD remains present and valid JSON."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/lib/jobs/officialDomains.ts",
-          "operation": "create",
-          "description": "Add an explicit allowlist of official domains (e.g., upsc.gov.in, ssc.nic.in, indianrailways.gov.in/rrb*, ibps.in, sbi.co.in and other official government domains as needed) and a helper to validate apply URLs against it; document the allowlist intent and maintenance guidance with concise comments."
+          "path": "frontend/src/seo/Seo.tsx",
+          "operation": "modify",
+          "description": "Update the default SEO description to emphasize graphic design, school projects, and college assignments (and remove government jobs focus). Keep LocalBusiness JSON-LD present and valid JSON, aligned with the updated description."
         },
         {
-          "path": "frontend/src/components/jobs/JobCard.tsx",
+          "path": "frontend/src/pages/HomePage.tsx",
           "operation": "modify",
-          "description": "Validate each job’s applyUrl using the official domain allowlist; if not allowed, disable the “Apply Now” button and show a clear label such as “Official link unavailable”; if allowed, keep secure external linking with target=\"_blank\" and rel=\"noopener noreferrer\" (Verify the component's usage instructions before implementing)."
+          "description": "Update the Home page <Seo> title/description props to reflect the new focus (graphic design + academic project solutions) and match the updated hero/services content."
         },
         {
-          "path": "frontend/src/lib/jobs/govJobsClient.ts",
+          "path": "frontend/src/pages/ServicesPage.tsx",
           "operation": "modify",
-          "description": "When mapping source items, preserve the raw applyUrl and avoid inventing links; rely on the official domain allowlist in UI logic (and/or mapping metadata) so non-official links are clearly handled."
+          "description": "Update the Services page <Seo> title/description props to reflect the three service areas and remove government forms/jobs emphasis."
+        },
+        {
+          "path": "frontend/src/pages/ContactPage.tsx",
+          "operation": "modify",
+          "description": "Update the Contact page <Seo> title/description props to reflect the rebranded services and consistent contact messaging."
+        },
+        {
+          "path": "frontend/index.html",
+          "operation": "modify",
+          "description": "Update the base HTML title/meta description to match the new service focus (graphic design, school projects, college assignments) and remove government jobs emphasis."
         }
       ]
     },
     {
       "id": "REQ-7",
-      "summary": "Restyle the Jobs page into a professional government-style layout with royal blue + white theme, header emblem, and card-based listings.",
+      "summary": "Ensure Contact page details (name/phones) match exactly, keep WhatsApp integration consistent, preserve form fields and map placeholder.",
       "acceptanceCriteria": [
-        "The Jobs page visually uses royal blue and white as the primary theme colors (buttons, accents, header elements).",
-        "The page remains fully responsive on mobile/tablet/desktop.",
-        "A government-style emblem/icon appears in the Jobs page header area.",
-        "Job listings are presented as cards with a prominent, high-contrast “Apply Now” button."
+        "Frontend contact page shows the business name and the phone string exactly as provided.",
+        "WhatsApp links use the configured WhatsApp number consistently across frontend config and backend cafe info response.",
+        "Contact form has fields: Name, Phone, Message and can submit successfully to the existing backend contact submission method.",
+        "Map placeholder/iframe section remains present on the Contact page."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/pages/JobsPage.tsx",
+          "path": "frontend/src/config/cafeInfo.ts",
           "operation": "modify",
-          "description": "Implement a government-style header/hero section with royal-blue accents and the emblem image; ensure responsive layout; keep card grid; adjust buttons and section styling to reinforce royal blue + white theme without modifying any read-only ui components (Verify the component's usage instructions before implementing)."
+          "description": "Verify and (if needed) set cafe name to “Nath Cyber Cafe”, phone string to “9435212145 / 9126026463”, and WhatsApp number to “9126026463” to ensure consistent WhatsApp link generation across the UI."
         },
         {
-          "path": "frontend/src/index.css",
+          "path": "frontend/src/pages/ContactPage.tsx",
           "operation": "modify",
-          "description": "If needed, fine-tune existing CSS variables (primary/ring/muted) to ensure a consistent royal-blue + white appearance while preserving accessibility contrast; do not introduce new global stylesheet paths."
+          "description": "Ensure the Contact page visibly renders the business name and phone string exactly as provided, continues to show the WhatsApp quick contact button, preserves the contact form field set (Name, Phone, Message), and keeps the Google Map placeholder section present."
+        },
+        {
+          "path": "frontend/src/components/contact/ContactForm.tsx",
+          "operation": "modify",
+          "description": "Confirm the contact form fields remain exactly Name, Phone, Message and that submission continues to use the existing contact submission hook without introducing new fields or flows."
         }
       ]
     },
     {
       "id": "REQ-8",
-      "summary": "Add Jobs experience footer content: contact details (phone 9435212145), WhatsApp button, and required disclaimer text (verbatim).",
+      "summary": "Maintain a clean minimalist royal blue + cyan + white theme with consistent typography, responsive layout, smooth scrolling, and fast loading.",
       "acceptanceCriteria": [
-        "The Jobs page (or site footer visible on the Jobs page) clearly displays Nath Cyber Cafe contact details and a working WhatsApp chat link/button.",
-        "The disclaimer text is present verbatim and visible on the Jobs page.",
-        "All user-facing text is in English."
+        "New/updated sections visually match the existing Tailwind theme variables and use a consistent typography scale.",
+        "Pages remain responsive at common breakpoints (mobile, tablet, desktop).",
+        "No new heavy libraries are introduced for gallery/testimonials; gallery behavior is implemented with lightweight UI logic.",
+        "Smooth scrolling remains enabled (no regression)."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/pages/JobsPage.tsx",
+          "path": "frontend/src/components/home/GallerySection.tsx",
           "operation": "modify",
-          "description": "Add a Jobs-page footer/disclaimer section that includes phone 9435212145, a WhatsApp chat button (reuse existing WhatsAppButton), and the disclaimer text exactly: “This website only provides information and official links. We are not a government organization.” (Verify the component's usage instructions before implementing)."
+          "description": "Ensure Gallery section styling uses existing Tailwind theme tokens (royal blue/cyan/white), remains responsive, and keeps the view-larger interaction lightweight (no new heavy libraries). If using shadcn-ui Dialog, verify the component's usage instructions before implementing."
         },
         {
-          "path": "frontend/src/components/site/SiteFooter.tsx",
+          "path": "frontend/src/components/home/TestimonialsSection.tsx",
           "operation": "modify",
-          "description": "Ensure the global footer contact section continues to show Nath Cyber Cafe contact details and WhatsApp linking; if necessary, adjust copy so it remains consistent with the government jobs experience without removing existing site-wide content (Verify the component's usage instructions before implementing)."
+          "description": "Ensure Testimonials section uses the existing typography scale and spacing conventions, is mobile-first responsive, and matches the established theme colors."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "If needed, make minimal adjustments to global typography/spacing utilities to keep consistency across new sections while preserving smooth scrolling behavior (no regressions to html scroll-behavior)."
         }
       ]
     },
     {
       "id": "REQ-9",
-      "summary": "Update SEO metadata for /jobs and keep the page fast (efficient filtering/pagination, clean commented mapping code).",
+      "summary": "Add/ensure footer social media icons/links area with working WhatsApp link and safe placeholders for unknown URLs.",
       "acceptanceCriteria": [
-        "/jobs SEO title and description mention government jobs and Nath Cyber Cafe.",
-        "Filtering and pagination remain performant with typical feed sizes (no noticeable UI lag when searching/filtering).",
-        "Key parsing/mapping/filtering logic is documented with concise comments."
+        "Footer renders social icons/links including WhatsApp and YouTube (existing), and placeholder links remain safe (#) without breaking navigation.",
+        "WhatsApp social link opens the configured wa.me URL."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/pages/JobsPage.tsx",
+          "path": "frontend/src/config/socialLinks.ts",
           "operation": "modify",
-          "description": "Update Seo props (title/description) to mention “Latest Government Jobs” and Nath Cyber Cafe; keep filtering in useMemo and pagination via slicing to avoid heavy client processing."
+          "description": "Ensure the WhatsApp social link is generated from the configured WhatsApp number and that other socials remain safe placeholders (#) when not provided, while keeping YouTube as the existing real URL."
         },
         {
-          "path": "frontend/src/lib/jobs/govJobsClient.ts",
+          "path": "frontend/src/components/site/SiteFooter.tsx",
           "operation": "modify",
-          "description": "Add concise comments around parsing and normalization so future maintenance is clear; keep the mapping logic lightweight to support fast-loading behavior."
-        },
-        {
-          "path": "frontend/src/lib/jobs/jobFiltering.ts",
-          "operation": "modify",
-          "description": "Add concise comments and ensure filtering does not do unnecessary work (e.g., avoid repeated heavy string building beyond what is needed for title/qualification matching)."
+          "description": "Ensure the footer renders a clearly styled social links area (icons/links) with a working WhatsApp link (configured wa.me) and other placeholder links that do not break navigation."
         }
       ]
     },
     {
-      "id": "REQ-10",
-      "summary": "Add the generated government-style emblem image as a static asset and render it in the Jobs page header.",
+      "id": "REQ-11",
+      "summary": "Place newly generated images under frontend/public/assets/generated and wire them into the Gallery and updated branding/hero usage.",
       "acceptanceCriteria": [
-        "The emblem image exists in frontend/public/assets/generated with the filename specified in imageRequirements.required.",
-        "The Jobs page header renders the emblem with appropriate alt text and responsive sizing."
+        "New images exist under frontend/public/assets/generated and are referenced by <img> tags in the Gallery section.",
+        "No backend endpoints are used to serve images."
       ],
       "file_operations": [
         {
-          "path": "frontend/public/assets/generated/gov-emblem.dim_256x256.png",
+          "path": "frontend/public/assets/generated/nath-logo-mark.dim_512x512.png",
           "operation": "create",
-          "description": "Add the generated image asset exactly as specified: frontend/public/assets/generated/gov-emblem.dim_256x256.png."
+          "description": "Add the generated minimal modern logomark asset as a static file under frontend/public/assets/generated."
         },
         {
-          "path": "frontend/src/pages/JobsPage.tsx",
+          "path": "frontend/public/assets/generated/logo-v2.dim_512x512.png",
+          "operation": "create",
+          "description": "Add the refined logo asset (v2) as a static file under frontend/public/assets/generated for footer/branding usage."
+        },
+        {
+          "path": "frontend/public/assets/generated/header-logo-v2.dim_512x512.png",
+          "operation": "create",
+          "description": "Add the refined header logo asset (v2) as a static file under frontend/public/assets/generated for header usage."
+        },
+        {
+          "path": "frontend/src/components/site/SiteHeader.tsx",
           "operation": "modify",
-          "description": "Render the emblem image from frontend/public/assets/generated/gov-emblem.dim_256x256.png in the Jobs page header with appropriate alt text and responsive sizing."
+          "description": "Update the header logo <img> reference to use frontend/public/assets/generated/header-logo-v2.dim_512x512.png."
+        },
+        {
+          "path": "frontend/src/components/site/SiteFooter.tsx",
+          "operation": "modify",
+          "description": "Update the footer logo <img> reference to use frontend/public/assets/generated/logo-v2.dim_512x512.png and ensure branding text matches the new focus."
+        },
+        {
+          "path": "frontend/src/components/home/GallerySection.tsx",
+          "operation": "modify",
+          "description": "Reference the gallery images by their exact static paths (frontend/public/assets/generated/gallery-01.dim_1200x900.png, gallery-02.dim_1200x900.png, gallery-03.dim_1200x900.png) via <img> tags; no backend fetching. If using shadcn-ui Dialog for view-larger, verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/home/HeroSection.tsx",
+          "operation": "modify",
+          "description": "Ensure hero illustration is referenced by its exact static path frontend/public/assets/generated/hero-illustration-v2.dim_1200x800.png and that no backend image loading is introduced."
         }
       ]
     }

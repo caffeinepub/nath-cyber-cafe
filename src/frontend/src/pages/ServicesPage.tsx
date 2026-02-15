@@ -7,7 +7,7 @@ export default function ServicesPage() {
     <>
       <Seo
         title="Our Services"
-        description="Comprehensive digital services including government forms, graphic design, and educational support. Fast, trusted & affordable."
+        description="Professional Graphic Design Services, School Projects, and College Assignments. Creative designs and neat academic work at affordable prices."
         path="/services"
       />
       
@@ -18,8 +18,7 @@ export default function ServicesPage() {
               Our <span className="text-primary">Services</span>
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              We offer a comprehensive range of digital services to meet all your personal, 
-              professional, and educational needs
+              Professional graphic design services, school projects, and college assignments tailored to your needs
             </p>
           </div>
         </Container>

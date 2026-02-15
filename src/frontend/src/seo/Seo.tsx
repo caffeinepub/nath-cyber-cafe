@@ -9,7 +9,7 @@ interface SeoProps {
 
 export default function Seo({ title, description, path = '' }: SeoProps) {
   const fullTitle = title ? `${title} | ${cafeInfo.name}` : cafeInfo.name;
-  const defaultDescription = 'Complete Digital & Online Services Under One Roof. Fast, Trusted & Affordable Services. Government forms, graphic design, school projects & more.';
+  const defaultDescription = 'Professional Graphic Design & Academic Project Solutions. Creative Designs & Neat Academic Work at Affordable Prices. Specializing in graphic design services, school projects, and college assignments.';
   const metaDescription = description || defaultDescription;
   const url = `${window.location.origin}${path}`;
 

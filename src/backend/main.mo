@@ -60,7 +60,7 @@ actor {
     {
       name = "Nath Cyber Cafe";
       phone = "9435212145 / 9126026463";
-      whatsapp = "9435212145";
+      whatsapp = "9126026463";
       location = { latitude = 26.145; longitude = 91.736 };
     };
   };
